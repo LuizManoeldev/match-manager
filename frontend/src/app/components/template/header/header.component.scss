@@ -1,0 +1,30 @@
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  background-color: rgb(46, 49, 145);
+  height: 6rem;
+
+
+}
+
+.header a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.header .logo{
+  //max-height: 5rem;
+  width: 8rem;
+  height: 6rem;
+  margin-left: 50px;
+  border-radius: 30%;
+}
+
+.header span{
+  margin-left: 10px;
+}

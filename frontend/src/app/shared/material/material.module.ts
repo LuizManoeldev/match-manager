@@ -8,6 +8,8 @@ import {FormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatIconModule,
     FormsModule,
     MatFormFieldModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatToolbarModule,
+    MatListModule
 
   ]
 })
