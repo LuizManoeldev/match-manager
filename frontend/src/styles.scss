@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('./assets/fonts/Gotham-Font/GothamBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+
+}
+
+body {
+  margin: 0;
+  background-image: url('assets/images/backgorund-4.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Gotham', sans-serif;
+  color: white;
+}
+
+
+
