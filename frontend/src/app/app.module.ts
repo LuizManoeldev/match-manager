@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { MainComponent } from './components/template/main/main.component';
 import {MaterialModule} from "./shared/material/material.module";
+import { CreatePeladaComponent } from './compenents/pelada/create-pelada/create-pelada.component';
+import { ListPeladaComponent } from './compenents/pelada/list-pelada/list-pelada.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import {MaterialModule} from "./shared/material/material.module";
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent
+    MainComponent,
+    CreatePeladaComponent,
+    ListPeladaComponent
   ],
   imports: [
     BrowserModule,
