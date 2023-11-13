@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
-import { MainComponent } from './components/template/main/main.component';
+import { NavComponent } from './components/template/nav/nav.component';
 import {MaterialModule} from "./shared/material/material.module";
-import { CreatePeladaComponent } from './compenents/pelada/create-pelada/create-pelada.component';
-import { ListPeladaComponent } from './compenents/pelada/list-pelada/list-pelada.component';
+import { CreatePeladaComponent } from './components/pelada/create-pelada/create-pelada.component';
+import { ListPeladaComponent } from './components/pelada/list-pelada/list-pelada.component';
+import { MainComponent } from './views/main/main.component';
+import { HomeComponent } from './views/home/home.component';
 
 
 @NgModule({
@@ -17,9 +19,11 @@ import { ListPeladaComponent } from './compenents/pelada/list-pelada/list-pelada
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent,
+    NavComponent,
     CreatePeladaComponent,
-    ListPeladaComponent
+    ListPeladaComponent,
+    MainComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

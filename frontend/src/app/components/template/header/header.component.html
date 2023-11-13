@@ -1,21 +1,16 @@
-<mat-toolbar class="header mat-elevation-z7">
+<mat-toolbar class="header mat-elevation-z4">
   <span>
-    <a> <img class="logo" src="../../../../assets/images/logo.png" alt="logo" > </a>
+      <a routerLink="/">
+          <img class="logo" src="" alt="loading" >
+      </a>
   </span>
-
-  <span>
-    <a routerLink="">
-      <i class="material-icons text-white align"> home </i>
-      <span class="text-white align"> Inicio </span>
-    </a>
+  <span class="title-group" >
+      <a ><!-- routerLink="{{routeUrl}}" -->
+          <i class="material-icons">
+              <!-- {{icon}} -->
+          </i>
+          <!-- {{ title }} -->
+          Breadcrumb
+      </a>
   </span>
-
-  <span>
-    <a routerLink="">
-      <i class="material-icons text-white align"> sports </i>
-      <span class="text-white align"> Minhas partidas </span>
-    </a>
-
-  </span>
-
 </mat-toolbar>

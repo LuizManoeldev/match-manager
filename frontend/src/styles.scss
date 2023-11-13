@@ -12,14 +12,10 @@ html, body {
 
 }
 
-body {
-  margin: 0;
-  background-image: url('assets/images/backgorund-4.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  font-family: 'Gotham', sans-serif;
-  color: white;
-}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
