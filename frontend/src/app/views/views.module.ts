@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../shared/material/material.module';
+import { MatchModule } from '../components/match/match.module';
 
 
 
@@ -8,7 +9,9 @@ import { MaterialModule } from '../shared/material/material.module';
   declarations: [],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    MatchModule
+    
   ]
 })
 export class ViewsModule { }

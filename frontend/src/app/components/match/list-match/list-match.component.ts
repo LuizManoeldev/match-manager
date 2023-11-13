@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import {Pelada} from "../../../shared/model/pelada";
 
 @Component({
-  selector: 'app-list-pelada',
-  templateUrl: './list-pelada.component.html',
-  styleUrls: ['./list-pelada.component.scss']
+  selector: 'app-list-match',
+  templateUrl: './list-match.component.html',
+  styleUrls: ['./list-match.component.scss']
 })
-export class ListPeladaComponent {
+export class ListMatchComponent {
   peladas: Array<Pelada>;
   pelada: Pelada;
 
@@ -29,4 +29,5 @@ export class ListPeladaComponent {
 
     }
   }
+
 }
