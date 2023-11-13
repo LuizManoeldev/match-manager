@@ -8,35 +8,20 @@ import {MatchService} from "../match.service"
   styleUrls: ['./list-match.component.scss']
 })
 export class ListMatchComponent {
-  matchs: Array<Match>;
+  matches: Array<Match>;
 
 
   constructor(private matchService: MatchService) {
-    this.matchs = new Array<Match>;
+    this.matches = new Array<Match>;
 
   }
 
   ngOnInit(){
-    this.matchService.read().subscribe(matchs => {
-        this.matchs = matchs
+    this.matchService.read().subscribe(matches => {
+        this.matches = matches
+
     }
       )
-
-     const Match1 = new Match('Match dos Amigos','Futebol', 'Quinta')
-    const Match2 = new Match('Volei e Piadas', 'Volei', 'Quarta');
-    const Match3 = new Match('Fut do Sabado', 'futebol', 'Sabado');
-    const Match4 = new Match('Match dos Irmaos', 'Volei', 'Sexta');
-    const Match5 = new Match('Match dos Irmaos', 'Volei', 'Sexta');
-    const Match6 = new Match('Match dos Irmaos', 'Volei', 'Sexta');
-    const Match7 = new Match('Match dos Irmaos', 'Volei', 'Sexta');
-
-    this.matchs.push(Match1);
-    this.matchs.push(Match2);
-    this.matchs.push(Match3);
-    this.matchs.push(Match4);
-    this.matchs.push(Match5);
-    this.matchs.push(Match6);
-    this.matchs.push(Match7); 
 
   }
 

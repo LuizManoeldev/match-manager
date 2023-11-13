@@ -1,14 +1,20 @@
 {
-    "matchs": [
-        {
-            "nome": "Volei e Piadas",
-            "esporte": "Volei",
-            "dia_da_semana": "Quarta"
-        },
-        {
-            "nome": "Fut do Sabado",
-            "esporte": "futebol",
-            "dia_da_semana": "Sabado"
-        }
-    ]
+  "matches": [
+    {
+      "id": 1,
+      "nome": "teste",
+      "esporte": "teste",
+      "dia_da_semana": "teste",
+      "numero_de_jogadores": 0,
+      "jogadores": []
+    },
+    {
+      "id": 2,
+      "nome": "teste2",
+      "esporte": "teste2",
+      "dia_da_semana": "teste2",
+      "numero_de_jogadores": 0,
+      "jogadores": []
+    }
+  ]
 }

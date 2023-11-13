@@ -20,6 +20,7 @@ import { HomeComponent } from './views/home/home.component';
 //Match
 import { MatchModule } from './components/match/match.module';
 
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { MatchModule } from './components/match/match.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatchModule
+    MatchModule,
+    HttpClientModule
 
   ],
   providers: [],

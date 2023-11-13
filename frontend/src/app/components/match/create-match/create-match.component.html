@@ -1,1 +1,38 @@
-<p>create-match works!</p>
+<h1> New Match</h1>
+<mat-card>
+  <mat-form-field class="selection">
+    <input matInput [(ngModel)]="match.nome" placeholder="Nome">
+  </mat-form-field>
+  <mat-form-field class="selection">
+    <input matInput [(ngModel)]="match.dia_da_semana" placeholder="Dia da Semana">
+  </mat-form-field>
+  <mat-form-field class="selection">
+    <input matInput [(ngModel)]="match.esporte" placeholder="Esporte">
+  </mat-form-field>
+
+
+<!--<div class="selection container">-->
+<!--  Dia da Semana-->
+<!--  <mat-selection-list [(ngModel)]="match.dia_da_semana" multiple="false" class="day-selection">-->
+<!--    <mat-list-option *ngFor="let dia of dias_da_semana" [value]="dia" class="option">-->
+<!--      {{dia}}-->
+<!--    </mat-list-option>-->
+<!--  </mat-selection-list>-->
+
+<!--  Esporte-->
+<!--  <mat-selection-list [(ngModel)]="match.esporte" multiple="false" class="sport-selection">-->
+<!--    <mat-list-option *ngFor="let esporte of esportes" [value]="esporte" class="option">-->
+<!--      {{esporte}}-->
+<!--    </mat-list-option>-->
+<!--  </mat-selection-list>-->
+<!--</div>-->
+
+  <span>
+        <button mat-raised-button (click)="createMatch()" color="primary">
+            Salvar
+        </button>
+        <button mat-raised-button (click)="cancel()">
+            Cancelar
+        </button>
+    </span>
+</mat-card>

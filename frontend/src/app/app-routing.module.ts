@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { MainComponent } from './views/main/main.component';
+import {CreateMatchComponent} from "./components/match/create-match/create-match.component";
 
 
 const routes: Routes = [
@@ -10,8 +11,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'matchs',
+    path: 'matches',
     component: MainComponent
+  },
+  {
+    path: 'matches/create',
+    component: CreateMatchComponent
   }
 ];
 @NgModule({
