@@ -1,6 +1,6 @@
 import {Jogador} from "./jogador";
 
-export class Pelada{
+export class Match{
   public nome: string;
   public esporte: string;
   public dia_da_semana: string;

@@ -1,13 +1,13 @@
-<mat-card class="example-card">
+<p>match works  </p>
+<mat-card class="match-card" *ngFor="let match of matchs">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{pelada.nome | titlecase}}</mat-card-title>
-      <mat-card-subtitle>{{pelada.esporte}}</mat-card-subtitle>
+      <mat-card-title>{{match.nome | titlecase}}</mat-card-title>
+      <mat-card-subtitle>{{match.esporte}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="getImageUrl()" alt="jogador">
+    <img mat-card-image [src]="getImageUrl(match)" alt="jogador">
     <mat-card-content>
       <p>
-        Esta Pelada ocorre toda {{pelada.dia_da_semana}}.
+        Esta match ocorre toda {{match.dia_da_semana}}.
       </p>
     </mat-card-content>
     <mat-card-actions>

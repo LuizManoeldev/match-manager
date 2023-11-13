@@ -10,7 +10,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'partidas',
+    path: 'matchs',
     component: MainComponent
   }
 ];
