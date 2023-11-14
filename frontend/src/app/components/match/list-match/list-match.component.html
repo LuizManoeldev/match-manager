@@ -6,8 +6,14 @@
     <img mat-card-image [src]="getImageUrl(match)" alt="jogador">
     <mat-card-content>
       <p>
-        Dia da semana:{{match.dia_da_semana}}.
-        Numero de jogadores {{match.numero_de_jogadores}}
+      <i class="material-icons red v-midle" >
+            event
+        </i> {{match.dia_da_semana}}
+      </p>
+      <p>
+      <i class="material-icons red v-midle" >
+            person
+        </i> {{match.numero_de_jogadores}}
       </p>
     </mat-card-content>
     <mat-card-actions>

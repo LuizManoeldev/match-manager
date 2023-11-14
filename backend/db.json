@@ -3,18 +3,26 @@
     {
       "id": 1,
       "nome": "teste",
-      "esporte": "teste",
-      "dia_da_semana": "teste",
-      "numero_de_jogadores": 0,
+      "esporte": "Futebol",
+      "dia_da_semana": "Terca",
+      "numero_de_jogadores": 10,
       "jogadores": []
     },
     {
       "id": 2,
       "nome": "teste2",
-      "esporte": "teste2",
-      "dia_da_semana": "teste2",
-      "numero_de_jogadores": 0,
+      "esporte": "Futebol",
+      "dia_da_semana": "Segunda",
+      "numero_de_jogadores": 6,
       "jogadores": []
+    },
+    {
+      "nome": "Volei da Quarta",
+      "esporte": "Volei",
+      "dia_da_semana": "Quinta",
+      "numero_de_jogadores": 2,
+      "jogadores": [],
+      "id": 3
     }
   ]
 }
