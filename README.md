@@ -1,9 +1,9 @@
-# PeladaPlus
+# Match Manager
 
 ## Descrição do Problema
-Imagine uma partida de futebol entre amigos, onde a diversão deveria ser a regra, mas a seleção desequilibrada dos times transforma o jogo em uma competição desigual. As "panelinhas" acabam se formando, tornando a competição injusta. Desse problema surgiu o Pelada+, a solução para garantir que cada jogo seja emocionante, competitivo e, acima de tudo, justo.
+Imagine uma partida de futebol entre amigos, onde a diversão deveria ser a regra, mas a seleção desequilibrada dos times transforma o jogo em uma competição desigual. As "panelinhas" acabam se formando, tornando a competição injusta. Desse problema surgiu o MManager, a solução para garantir que cada jogo seja emocionante, competitivo e, acima de tudo, justo.
 
-A ideia do Pelada+ é que com apenas alguns cliques, você possa criar sorteios de times que levam em conta a habilidade e a experiência de cada jogador, eliminando assim as disparidades e as "panelinhas". Sendo o mais abrangente possível, podendo escolher o número de times, quantos jogadores em cada time e esporte praticado.
+A ideia do MManager é que com apenas alguns cliques, você possa criar sorteios de times que levam em conta a habilidade e a experiência de cada jogador, eliminando assim as disparidades e as "panelinhas". Sendo o mais abrangente possível, podendo escolher o número de times, quantos jogadores em cada time e esporte praticado.
 Solução a ser implementada:
 
 ## Resolução do Problema
@@ -14,13 +14,13 @@ Comece definindo a sua "pelada" - o dia da semana, horário e o esporte praticad
 Adicione os jogadores que frequentam sua pelada regularmente. Insira seus nomes e atribua classificações de 1 a 5 estrelas para refletir suas habilidades e experiência.
 
 3. Posições Especiais
-Inicialmente o Pelada+ trabalhará apenas com futebol ou vôlei, onde existem duas posições chaves que devem ser levadas em consideração na hora do sorteio. Por exemplo, no vôlei, o "Levantador" é uma posição crucial, enquanto no futebol, o "Goleiro" desempenha um papel fundamental. Portanto, é indispensável que cada time tenha o seu.
+Inicialmente o MManager trabalhará apenas com futebol ou vôlei, onde existem duas posições chaves que devem ser levadas em consideração na hora do sorteio. Por exemplo, no vôlei, o "Levantador" é uma posição crucial, enquanto no futebol, o "Goleiro" desempenha um papel fundamental. Portanto, é indispensável que cada time tenha o seu.
 
 4. Sorteios Precisos
-Quando estiver pronto para o próximo jogo, indique quais jogadores estarão presentes e determine o número de times e jogadores por time. O Pelada+ faz o resto.
+Quando estiver pronto para o próximo jogo, indique quais jogadores estarão presentes e determine o número de times e jogadores por time. O MManager faz o resto.
 
 5. Equipes Balanceadas 
-O algoritmo do Pelada+ se encarregará de criar times equilibrados. Cada equipe terá um jogador especial (Levantador ou Goleiro) e uma média de estrelas tão próxima quanto possível, garantindo que cada jogo seja uma competição justa.
+O algoritmo do MManager se encarregará de criar times equilibrados. Cada equipe terá um jogador especial (Levantador ou Goleiro) e uma média de estrelas tão próxima quanto possível, garantindo que cada jogo seja uma competição justa.
 
 
 
