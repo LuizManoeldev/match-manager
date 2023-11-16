@@ -13,9 +13,7 @@ export class MatchService {
   baseUrl = ' http://localhost:3000/matches'
 
 
-  constructor(private http: HttpClient,
-              ) {
-
+  constructor(private http: HttpClient) {
   }
 
   create(match: Match): Observable<Match>{

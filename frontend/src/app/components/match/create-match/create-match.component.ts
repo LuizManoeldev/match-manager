@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Match} from "../../../shared/model/match";
-import {MatchService} from "../match.service"
+import {MatchService} from "../../../shared/services/match.service"
 import {Router} from "@angular/router";
 import {Jogador} from "../../../shared/model/jogador";
 @Component({

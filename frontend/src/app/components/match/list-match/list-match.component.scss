@@ -1,27 +1,35 @@
 :host{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  color: white;
 }
 
 .match-card {
+    background-color: rgba(1, 0, 3, 0.73);
     height: 21rem;
     width: 15rem;
-    background-color: #e6e9f8;
     margin: 10px;
-}
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 
-mat-card-actions {
-  display: flex;
-  justify-content: flex-end ;
-  color:black;
+    &:hover {
+      transform: scale(1.03);
+  }
 }
 
 mat-card-header {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 1rem;
+  color: white;
 }
+mat-card-subtitle{
+  color: #262627;
+  margin-left: 2px;
+}
+
 mat-card-content{
   display: flex;
   flex-direction: column;
@@ -30,7 +38,15 @@ mat-card-content{
 
 mat-card-content p{
   margin-bottom:0;
+
 }
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end ;
+  color:white;
+}
+
 .v-midle{
   vertical-align: middle;
   margin-bottom: 0;

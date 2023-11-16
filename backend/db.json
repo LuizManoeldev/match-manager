@@ -2,7 +2,7 @@
   "matches": [
     {
       "id": 1,
-      "nome": "teste",
+      "nome": "Pelada TSI",
       "esporte": "Futebol",
       "dia_da_semana": "Terca",
       "numero_de_jogadores": 10,
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "nome": "teste2",
+      "nome": "Pelada da Segunda",
       "esporte": "Futebol",
       "dia_da_semana": "Segunda",
       "numero_de_jogadores": 6,

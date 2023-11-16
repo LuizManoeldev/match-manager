@@ -1,7 +1,7 @@
 <mat-card class="match-card" *ngFor="let match of matches">
     <mat-card-header>
       <mat-card-title>{{match.nome | titlecase}}</mat-card-title>
-      <mat-card-subtitle>{{match.esporte}}</mat-card-subtitle>
+<!--      <mat-card-subtitle>{{match.esporte}}</mat-card-subtitle>-->
     </mat-card-header>
     <img mat-card-image [src]="getImageUrl(match)" alt="jogador">
     <mat-card-content>
@@ -17,8 +17,6 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-icon-button><mat-icon>delete</mat-icon></button>
-      <button mat-icon-button><mat-icon>edit</mat-icon></button>
-      <button mat-icon-button><mat-icon>menu </mat-icon></button>
+      <button mat-icon-button><mat-icon>login</mat-icon></button>
     </mat-card-actions>
-  </mat-card>
+</mat-card>
