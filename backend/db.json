@@ -23,6 +23,18 @@
       "numero_de_jogadores": 2,
       "jogadores": [],
       "id": 3
+    },
+    {
+      "nome": "Testanto",
+      "esporte": [
+        "Volei"
+      ],
+      "dia_da_semana": [
+        "Terça"
+      ],
+      "numero_de_jogadores": 0,
+      "jogadores": [],
+      "id": 4
     }
   ]
 }

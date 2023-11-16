@@ -26,7 +26,7 @@ export class ListMatchComponent {
   }
 
   getImageUrl(match: Match): string {
-    const stringP = match.esporte
+    const stringP = match.esporte[0]
     switch (stringP.toLowerCase()) {
       case "volei":
         return "../../../../assets/images/volei.png"

@@ -3,36 +3,46 @@
   <mat-form-field class="selection">
     <input matInput [(ngModel)]="match.nome" placeholder="Nome">
   </mat-form-field>
-  <mat-form-field class="selection">
-    <input matInput [(ngModel)]="match.dia_da_semana" placeholder="Dia da Semana">
-  </mat-form-field>
-  <mat-form-field class="selection">
-    <input matInput [(ngModel)]="match.esporte" placeholder="Esporte">
-  </mat-form-field>
 
+  <div class="selection-container">
+  <label>Esporte</label>
+  <mat-radio-group class="example-radio-group" [(ngModel)]="match.esporte">
+    <mat-radio-button *ngFor= "let esporte of esportes" class="example-radio-button" [value]="esporte">{{esporte}}</mat-radio-button>
+  </mat-radio-group>
 
-<!--<div class="selection container">-->
-<!--  Dia da Semana-->
-<!--  <mat-selection-list [(ngModel)]="match.dia_da_semana" multiple="false" class="day-selection">-->
-<!--    <mat-list-option *ngFor="let dia of dias_da_semana" [value]="dia" class="option">-->
-<!--      {{dia}}-->
-<!--    </mat-list-option>-->
-<!--  </mat-selection-list>-->
-
-<!--  Esporte-->
-<!--  <mat-selection-list [(ngModel)]="match.esporte" multiple="false" class="sport-selection">-->
-<!--    <mat-list-option *ngFor="let esporte of esportes" [value]="esporte" class="option">-->
-<!--      {{esporte}}-->
-<!--    </mat-list-option>-->
-<!--  </mat-selection-list>-->
-<!--</div>-->
+  <label>Dia da Semana</label>
+  <mat-radio-group class="example-radio-group" [(ngModel)]="match.dia_da_semana">
+    <mat-radio-button *ngFor= "let dia of dias_da_semana" class="example-radio-button" [value]="dia">{{dia}}</mat-radio-button>
+  </mat-radio-group>
+  </div>
 
   <span>
-        <button mat-raised-button (click)="createMatch()" color="primary">
-            Salvar
-        </button>
-        <button mat-raised-button (click)="cancel()">
-            Cancelar
-        </button>
+        <button mat-raised-button (click)="createMatch()" color="primary"> Salvar </button>
+        <button mat-raised-button (click)="cancel()"> Cancelar </button>
     </span>
 </mat-card>
+
+
+<!--  <mat-form-field class="selection">-->
+<!--    <input matInput [(ngModel)]="match.dia_da_semana" placeholder="Dia da Semana">-->
+<!--  </mat-form-field>-->
+<!--  <mat-form-field class="selection">-->
+<!--    <input matInput [(ngModel)]="match.esporte" placeholder="Esporte">-->
+<!--  </mat-form-field>-->
+
+<!--  <div class="selection container">-->
+<!--  Dia da Semana-->
+<!--    <mat-selection-list [(ngModel)]="match.dia_da_semana" multiple="false" class="day-selection">-->
+<!--    <mat-list-option *ngFor="let dia of dias_da_semana" [value]="dia" class="option">-->
+<!--    {{dia}}-->
+<!--    </mat-list-option>-->
+<!--    </mat-selection-list>-->
+
+<!--    Esporte-->
+<!--    <mat-selection-list [(ngModel)]="match.esporte" multiple="false" class="sport-selection">-->
+<!--    <mat-list-option *ngFor="let esporte of esportes" [value]="esporte" class="option">-->
+<!--    {{esporte}}-->
+<!--    </mat-list-option>-->
+<!--    </mat-selection-list>-->
+
+<!--  </div>-->

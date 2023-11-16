@@ -12,12 +12,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatMenuModule} from '@angular/material/menu';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    MatRadioModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,
@@ -30,6 +32,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatMenuModule
   ],
   exports: [
+    MatRadioModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,
