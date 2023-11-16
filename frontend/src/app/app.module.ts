@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Template
-import { HeaderComponent } from './components/template/header/header.component';
-import { FooterComponent } from './components/template/footer/footer.component';
-import { NavComponent } from './components/template/nav/nav.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { NavComponent } from './components/layout/nav/nav.component';
 
 //Shared
 import {MaterialModule} from "./shared/material/material.module";

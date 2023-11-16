@@ -22,4 +22,4 @@ import { NavComponent } from './nav/nav.component';
     NavComponent
   ]
 })
-export class TemplateModule { }
+export class LayoutModule { }
