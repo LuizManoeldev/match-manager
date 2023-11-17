@@ -31,6 +31,11 @@ export class MatchService {
     return this.http.get<Match[]>(this.baseUrl)
   }
 
+  readById(id :string) :Observable<Match>{
+    const url = `${this.baseUrl}/${id}`
+    return this.http.get<Match>(url)
+  }
+
   delete() {
 
   }

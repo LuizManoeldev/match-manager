@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { MainComponent } from './views/main/main.component';
 import {CreateMatchComponent} from "./components/match/create-match/create-match.component";
+import {DetailsMatchComponent} from "./components/match/details-match/details-match.component";
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'matches/create',
     component: CreateMatchComponent
+  },
+  {
+    path: 'matches/details/:id',
+    component: DetailsMatchComponent
   }
 ];
 @NgModule({

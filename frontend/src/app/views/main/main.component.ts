@@ -9,7 +9,4 @@ import {Router} from '@angular/router'
 export class MainComponent {
   constructor(private router: Router) {
   }
-  navegateToMatchCreate() {
-      this.router.navigate(['/matches/create'])
-  }
 }

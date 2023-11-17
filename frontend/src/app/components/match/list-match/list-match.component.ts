@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Match} from "../../../shared/model/match";
 import {MatchService} from "../../../shared/services/match.service"
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-match',
@@ -11,7 +12,8 @@ export class ListMatchComponent {
   matches: Array<Match>;
 
 
-  constructor(private matchService: MatchService) {
+  constructor(private matchService: MatchService,
+              private router: Router) {
     this.matches = new Array<Match>;
 
   }
@@ -32,9 +34,13 @@ export class ListMatchComponent {
         return "../../../../assets/images/volei.png"
       default:
         return "../../../../assets/images/soccer.png"
-
     }
   }
 
+  navegateToMatchCreate() {
+    this.router.navigate(['/matches/create'])
+  }
 
 }
+
+

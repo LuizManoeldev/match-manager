@@ -1,3 +1,4 @@
+<div class="cards">
 <mat-card class="match-card" *ngFor="let match of matches">
     <mat-card-header>
       <mat-card-title>{{match.nome | titlecase}}</mat-card-title>
@@ -17,7 +18,10 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-icon-button><mat-icon>login</mat-icon></button>
+      <a routerLink="details/{{match.id}}" mat-icon-button ><mat-icon>menu</mat-icon></a>
     </mat-card-actions>
 </mat-card>
-
+<button class="add-button" mat-fab (click)="navegateToMatchCreate()">
+  <mat-icon>add</mat-icon>
+</button>
+</div>
