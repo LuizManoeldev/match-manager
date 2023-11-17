@@ -21,7 +21,6 @@ export class ListMatchComponent {
   ngOnInit(){
     this.matchService.read().subscribe(matches => {
         this.matches = matches
-
     }
       )
 
