@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MaterialModule} from '../../shared/material/material.module'
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
+import {RouterOutlet} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { NavComponent } from './nav/nav.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    RouterOutlet
   ],
   exports:[
     HeaderComponent,
