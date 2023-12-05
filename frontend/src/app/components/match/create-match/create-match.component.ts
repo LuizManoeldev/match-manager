@@ -9,13 +9,7 @@ import {Jogador} from "../../../shared/model/jogador";
   styleUrls: ['./create-match.component.scss']
 })
 export class CreateMatchComponent {
-  match: Match = {
-    nome: "",
-    esporte: "",
-    dia_da_semana: "",
-    numero_de_jogadores: 0,
-    jogadores: new Array<Jogador>
-  }
+  match: Match = new Match('', '', '')
   esportes = ["Futebol", "Volei"]
   dias_da_semana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"]
 

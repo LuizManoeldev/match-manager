@@ -10,15 +10,8 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./details-match.component.scss']
 })
 export class DetailsMatchComponent {
-  match: Match = {
-    nome: "",
-    esporte: "",
-    dia_da_semana: "",
-    numero_de_jogadores: 0,
-    jogadores: new Array<Jogador>
-  }
+  match: Match = new Match('', '', '')
   jogador: Jogador = new Jogador("", false, 0)
-
   rankeamento = [1, 2, 3, 4, 5]
 
   displayedColumns = ['nome', 'capitao', 'score', 'actions']

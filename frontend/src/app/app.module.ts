@@ -18,6 +18,8 @@ import {MaterialModule} from "./shared/material/material.module";
 //Match
 import { MatchModule } from './components/match/match.module';
 
+//Firestore
+import {FirestoreModule} from './firestore/firestore.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { MatchModule } from './components/match/match.module';
     MatchModule,
     HttpClientModule,
     ViewsModule,
-    LayoutModule
+    LayoutModule,
+    FirestoreModule
 
   ],
   providers: [],

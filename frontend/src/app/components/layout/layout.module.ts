@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {MaterialModule} from '../../shared/material/material.module'
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
-import {RouterOutlet} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
+import {ViewsModule} from "../../views/views.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import {RouterOutlet} from "@angular/router";
   imports: [
     CommonModule,
     MaterialModule,
-    RouterOutlet
+    RouterOutlet,
+    ViewsModule,
+    RouterLink
   ],
   exports:[
     HeaderComponent,
