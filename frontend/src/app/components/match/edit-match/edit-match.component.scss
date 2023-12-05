@@ -1,0 +1,40 @@
+.day-selection{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.day-selection mat-list-option{
+  width: 10rem;
+  font-size: 1px;
+}
+
+.sport-selection{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.sport-selection mat-list-option{
+  width: 10rem;
+  font-size: 1px;
+
+}
+.sport-selection mat-list-option:nth-child(2){
+  margin-left:2.34rem;
+}
+
+button{
+  width: 10%;
+  margin: 20px 15px 15px 15px;
+}
+
+.selection-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.selection-container mat-radio-group{
+  display: flex;
+  flex-direction: row;
+}
+

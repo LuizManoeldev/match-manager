@@ -2,11 +2,30 @@
   "matches": [
     {
       "id": 1,
-      "nome": "Pelada TSI",
-      "esporte": "Futebol",
-      "dia_da_semana": "Terca",
+      "nome": "Pelada CSTSI",
+      "esporte": "Volei",
+      "dia_da_semana": "Sexta",
       "numero_de_jogadores": 10,
-      "jogadores": []
+      "jogadores": [
+        {
+          "id": 1,
+          "nome": "Joao",
+          "posicao": "Levantador",
+          "score": 5
+        },
+        {
+          "id": 2,
+          "nome": "Tomas",
+          "posicao": "Libero",
+          "score": 5
+        },
+        {
+          "id": 3,
+          "nome": "Kleber",
+          "posicao": "Oposto",
+          "score": 5
+        }
+      ]
     },
     {
       "id": 2,
@@ -23,14 +42,6 @@
       "numero_de_jogadores": 2,
       "jogadores": [],
       "id": 3
-    },
-    {
-      "nome": "Volei da sexta",
-      "esporte": "Volei",
-      "dia_da_semana": "Domingo",
-      "numero_de_jogadores": 0,
-      "jogadores": [],
-      "id": 4
     }
   ]
 }

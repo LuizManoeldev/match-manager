@@ -3,12 +3,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MatchService} from "../../../shared/services/match.service"
 import {Match} from "../../../shared/model/match";
 import {Jogador} from "../../../shared/model/jogador";
+
 @Component({
-  selector: 'app-details-match',
-  templateUrl: './details-match.component.html',
-  styleUrls: ['./details-match.component.scss']
+  selector: 'app-edit-match',
+  templateUrl: './edit-match.component.html',
+  styleUrls: ['./edit-match.component.scss']
 })
-export class DetailsMatchComponent {
+export class EditMatchComponent {
   match: Match = {
     nome: "",
     esporte: "",
@@ -17,7 +18,8 @@ export class DetailsMatchComponent {
     jogadores: new Array<Jogador>
   }
 
-  displayedColumns = ['nome', 'posicao', 'score', 'actions']
+  esportes = ["Futebol", "Volei"]
+  dias_da_semana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"]
   constructor(private MatchService: MatchService,
               private router: Router,
               private route: ActivatedRoute,
@@ -33,6 +35,20 @@ export class DetailsMatchComponent {
     })
   }
 
+  salvar(){
+    this.MatchService.update(this.match).subscribe(()=> {
+      this.router.navigate([`/matches/details/${this.match.id}`]);
+    })
+  }
 
+  cancelar(){
+    this.router.navigate([`/matches/details/${this.match.id}`])
+  }
+
+  deletar(){
+    this.MatchService.delete(this.match).subscribe(()=> {
+      this.router.navigate([`/matches`]);
+    })
+  }
 
 }

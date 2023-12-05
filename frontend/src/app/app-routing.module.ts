@@ -4,7 +4,7 @@ import { HomeComponent } from './views/home/home.component';
 import { MainComponent } from './views/main/main.component';
 import {CreateMatchComponent} from "./components/match/create-match/create-match.component";
 import {DetailsMatchComponent} from "./components/match/details-match/details-match.component";
-
+import {EditMatchComponent} from "./components/match/edit-match/edit-match.component";
 
 const routes: Routes = [
   {
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'matches/details/:id',
     component: DetailsMatchComponent
+  },
+  {
+    path: 'matches/details/:id/edit',
+    component: EditMatchComponent
   }
 ];
 @NgModule({

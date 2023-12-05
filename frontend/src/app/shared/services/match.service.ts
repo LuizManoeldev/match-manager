@@ -23,22 +23,24 @@ export class MatchService {
     )
   }
 
-  update(){
-
+  update(match: Match) :Observable<Match>{
+    const url = `${this.baseUrl}/${match.id}`
+    return this.http.put<Match>(url, match)
   }
 
   read(): Observable<Match[]>{
     return this.http.get<Match[]>(this.baseUrl)
   }
 
+  delete(match: Match): Observable<Match>{
+    return this.http.delete<Match>(`${this.baseUrl}/${match.id}`)
+  }
   readById(id :string) :Observable<Match>{
     const url = `${this.baseUrl}/${id}`
     return this.http.get<Match>(url)
   }
 
-  delete() {
 
-  }
   showMessage(msg: string, isError: boolean = false){
     console.log(msg)
   }

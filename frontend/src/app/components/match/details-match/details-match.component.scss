@@ -1,4 +1,23 @@
 mat-card{
   height: 100vh;
   background-color: rgba(38,38,39,0.62);
+
+}
+
+mat-card-title{
+  padding: 20px;
+  padding-bottom: 0px;
+  font-size:5rem;
+  font-weight: bold;
+  border-radius: 15px;
+}
+
+
+mat-icon{
+  vertical-align: middle;
+}
+
+.footer{
+  display: flex;
+  justify-content: space-between;
 }
