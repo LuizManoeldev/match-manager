@@ -8,22 +8,9 @@
       "numero_de_jogadores": 10,
       "jogadores": [
         {
-          "id": 1,
-          "nome": "Joao",
-          "posicao": "Levantador",
-          "score": 5
-        },
-        {
-          "id": 2,
-          "nome": "Tomas",
-          "posicao": "Libero",
-          "score": 5
-        },
-        {
-          "id": 3,
-          "nome": "Kleber",
-          "posicao": "Oposto",
-          "score": 5
+          "nome": "Marcos",
+          "capitao": true,
+          "score": 3
         }
       ]
     },
@@ -33,14 +20,26 @@
       "esporte": "Futebol",
       "dia_da_semana": "Segunda",
       "numero_de_jogadores": 6,
-      "jogadores": []
+      "jogadores": [
+        {
+          "nome": "Tomas",
+          "capitao": false,
+          "score": 3
+        }
+      ]
     },
     {
       "nome": "Volei da Quarta",
       "esporte": "Volei",
       "dia_da_semana": "Quinta",
       "numero_de_jogadores": 2,
-      "jogadores": [],
+      "jogadores": [
+        {
+          "nome": "Kleber",
+          "capitao": true,
+          "score": 1
+        }
+      ],
       "id": 3
     }
   ]

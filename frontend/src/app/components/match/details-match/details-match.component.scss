@@ -21,3 +21,14 @@ mat-icon{
   display: flex;
   justify-content: space-between;
 }
+
+jogador{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+
+.capitan{
+  width:25px;
+  height:25px;
+}

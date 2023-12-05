@@ -1,6 +1,11 @@
-export interface Jogador{
-  id?: number;
+export class Jogador{
   nome: string;
-  posicao: string;
+  capitao: boolean;
   score: number
+
+  constructor(nome: string, capitao: boolean, score: number){
+    this.nome = nome;
+    this.capitao = capitao;
+    this.score = score;
+  }
 }

@@ -1,8 +1,9 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import {Component, ElementRef, Renderer2, SimpleChanges} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatchService} from "../../../shared/services/match.service"
 import {Match} from "../../../shared/model/match";
 import {Jogador} from "../../../shared/model/jogador";
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-details-match',
   templateUrl: './details-match.component.html',
@@ -16,13 +17,16 @@ export class DetailsMatchComponent {
     numero_de_jogadores: 0,
     jogadores: new Array<Jogador>
   }
+  jogador: Jogador = new Jogador("", false, 0)
 
-  displayedColumns = ['nome', 'posicao', 'score', 'actions']
+  rankeamento = [1, 2, 3, 4, 5]
+
+  displayedColumns = ['nome', 'capitao', 'score', 'actions']
   constructor(private MatchService: MatchService,
               private router: Router,
               private route: ActivatedRoute,
               private el: ElementRef,
-              private renderer: Renderer2) {
+              private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -35,4 +39,26 @@ export class DetailsMatchComponent {
 
 
 
+
+  addJogador(){
+    this.match.jogadores = this.match.jogadores.concat(this.jogador)
+    this.cdr.detectChanges();
+    this.MatchService.update(this.match).subscribe(()=> {
+    })
+
+    this.jogador = new Jogador('', false, 0)
+  }
+
+  deleteJogador(nome: string){
+    this.match.jogadores = this.match.jogadores.filter(jogador => jogador.nome !== nome);
+    this.cdr.detectChanges();
+    this.MatchService.update(this.match).subscribe(()=> {
+    })
+  }
+
+
+  isCapitan() {
+    this.jogador.capitao = true;
+    this.cdr.detectChanges();
+  }
 }

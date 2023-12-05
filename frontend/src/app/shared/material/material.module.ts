@@ -14,7 +14,7 @@ import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -31,7 +31,8 @@ import { MatTableModule } from '@angular/material/table';
     MatToolbarModule,
     MatListModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
   ],
   exports: [
     MatRadioModule,
@@ -46,7 +47,8 @@ import { MatTableModule } from '@angular/material/table';
     MatListModule,
     MatSidenavModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
 
   ]
 })
