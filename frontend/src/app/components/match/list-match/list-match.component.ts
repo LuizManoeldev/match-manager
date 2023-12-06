@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Match} from "../../../shared/model/match";
 import {MatchService} from "../../../shared/services/match.service"
 import {Router} from "@angular/router";
+import {MatchFirestoreService} from "../../../shared/services/match-firestore.service";
 
 @Component({
   selector: 'app-list-match',
@@ -20,9 +21,8 @@ export class ListMatchComponent {
 
   ngOnInit(){
     this.matchService.read().subscribe(matches => {
-        this.matches = matches
-    }
-      )
+
+    })
 
   }
 

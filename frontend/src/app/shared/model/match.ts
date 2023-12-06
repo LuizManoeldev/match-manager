@@ -12,7 +12,7 @@ export class Match{
     this.nome = nome;
     this.dia_da_semana = dia_da_semana;
     this.esporte = esporte;
-    this.numero_de_jogadores = 0;
     this.jogadores = new Array<Jogador>();
+    this.numero_de_jogadores = this.jogadores.length;
   }
 }
