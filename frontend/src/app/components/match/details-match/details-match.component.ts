@@ -4,18 +4,19 @@ import {MatchService} from "../../../shared/services/match.service"
 import {Match} from "../../../shared/model/match";
 import {Jogador} from "../../../shared/model/jogador";
 import { ChangeDetectorRef } from '@angular/core';
+import {MatchFirestoreService} from "../../../shared/services/match-firestore.service";
 @Component({
   selector: 'app-details-match',
   templateUrl: './details-match.component.html',
   styleUrls: ['./details-match.component.scss']
 })
 export class DetailsMatchComponent {
-  match: Match = new Match('', '', '')
+  match: Match = new Match()
   jogador: Jogador = new Jogador("", false, 0)
   rankeamento = [1, 2, 3, 4, 5]
 
   displayedColumns = ['nome', 'capitao', 'score', 'actions']
-  constructor(private MatchService: MatchService,
+  constructor(private MatchService: MatchFirestoreService,
               private router: Router,
               private route: ActivatedRoute,
               private el: ElementRef,

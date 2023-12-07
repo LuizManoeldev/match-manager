@@ -10,7 +10,7 @@ import {MatchFirestoreService} from "../../../shared/services/match-firestore.se
   styleUrls: ['./create-match.component.scss']
 })
 export class CreateMatchComponent {
-  match: Match = new Match('', '', '')
+  match: Match = new Match()
   esportes = ["Futebol", "Volei"]
   dias_da_semana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"]
 

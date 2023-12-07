@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MatchService} from "../../../shared/services/match.service"
 import {Match} from "../../../shared/model/match";
 import {Jogador} from "../../../shared/model/jogador";
+import {MatchFirestoreService} from "../../../shared/services/match-firestore.service";
 
 @Component({
   selector: 'app-edit-match',
@@ -10,11 +11,11 @@ import {Jogador} from "../../../shared/model/jogador";
   styleUrls: ['./edit-match.component.scss']
 })
 export class EditMatchComponent {
-  match: Match = new Match('', '', '')
+  match: Match = new Match();
 
   esportes = ["Futebol", "Volei"]
   dias_da_semana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"]
-  constructor(private MatchService: MatchService,
+  constructor(private MatchService: MatchFirestoreService,
               private router: Router,
               private route: ActivatedRoute,
               private el: ElementRef,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Match} from "../../../shared/model/match";
 import {MatchService} from "../../../shared/services/match.service"
 import {Router} from "@angular/router";
@@ -9,20 +9,21 @@ import {MatchFirestoreService} from "../../../shared/services/match-firestore.se
   templateUrl: './list-match.component.html',
   styleUrls: ['./list-match.component.scss']
 })
-export class ListMatchComponent {
-  matches: Array<Match>;
+export class ListMatchComponent implements OnInit{
+  matches: Match[] = [];
 
 
-  constructor(private matchService: MatchService,
+  constructor(private matchService: MatchFirestoreService,
               private router: Router) {
-    this.matches = new Array<Match>;
 
   }
 
   ngOnInit(){
     this.matchService.read().subscribe(matches => {
-
+      this.matches = matches
     })
+    console.log('estou aqui');
+    console.log(this.matches);
 
   }
 
