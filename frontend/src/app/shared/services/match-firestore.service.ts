@@ -19,13 +19,8 @@ export class MatchFirestoreService {
   read(): Observable<Match[]> {
     return this.colecaoMatches.valueChanges({idField: 'id'});
   }
-
-
   create(Match: Match): Observable<object> {
-    // removendo id pois ele está undefined, já que um novo usuário
     delete Match.id;
-    // Object.assign({}, Match) é usado para passar um objeto json puro. Não se aceita passar um objeto customizado
-    // o from transforma uma promise num Observable, para mantermos a assinatura similar ao do outro service
     return from(this.colecaoMatches.add(Object.assign({}, Match)));
   }
 
@@ -43,14 +38,5 @@ export class MatchFirestoreService {
     delete Match.id;
     return from(this.colecaoMatches.doc(id).update(Object.assign({}, Match)));
   }
-//
-//
-//   listarMaioresDeIdade(): Observable<Match[]> {
-//     let MatchsMaioresIdade: AngularFirestoreCollection<Match>;
-//     // fazendo pesquisas usando o where. Um where pode ser encadeado com outro
-//     MatchsMaioresIdade = this.afs.collection(this.NOME_COLECAO, ref => ref.where('idade', '>', '17'));
-//     return MatchsMaioresIdade.valueChanges();
-//   }
-
 
 }
