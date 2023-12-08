@@ -5,8 +5,8 @@ export class Match {
   public nome: string;
   public dia_da_semana: string;
   public esporte: string;
-  public jogadores: Jogador[] = new Array<Jogador>();
-  public numero_de_jogadores: number = this.jogadores.length;
+  public jogadores: Array<object> = [];
+
 
   constructor(id?: string, match: Partial<Match> = {}) {
     this.id = id;
@@ -14,7 +14,6 @@ export class Match {
     this.dia_da_semana = match.dia_da_semana || '';
     this.esporte = match.esporte || '';
     this.jogadores = match.jogadores || [];
-    this.numero_de_jogadores = this.jogadores.length;
   }
 }
 

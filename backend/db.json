@@ -1,46 +1,31 @@
 {
   "matches": [
     {
-      "id": 1,
-      "nome": "Pelada CSTSI",
-      "esporte": "Volei",
-      "dia_da_semana": "Sexta",
-      "numero_de_jogadores": 10,
-      "jogadores": [
-        {
-          "nome": "Marcos",
-          "capitao": true,
-          "score": 3
-        }
-      ]
-    },
-    {
-      "id": 2,
       "nome": "Pelada da Segunda",
-      "esporte": "Futebol",
       "dia_da_semana": "Segunda",
-      "numero_de_jogadores": 6,
+      "esporte": "Futebol",
       "jogadores": [
         {
-          "nome": "Tomas",
+          "nome": "Joao",
           "capitao": false,
-          "score": 3
-        }
-      ]
-    },
-    {
-      "nome": "Volei da Quarta",
-      "esporte": "Volei",
-      "dia_da_semana": "Quinta",
-      "numero_de_jogadores": 2,
-      "jogadores": [
+          "score": 4
+        },
         {
-          "nome": "Kleber",
+          "nome": "Luiz",
           "capitao": true,
-          "score": 1
+          "score": 5
         }
       ],
-      "id": 3
+      "numero_de_jogadores": 0,
+      "id": 1
+    },
+    {
+      "nome": "Teste",
+      "dia_da_semana": "Segunda",
+      "esporte": "Futebol",
+      "jogadores": [],
+      "numero_de_jogadores": 0,
+      "id": 2
     }
   ]
 }

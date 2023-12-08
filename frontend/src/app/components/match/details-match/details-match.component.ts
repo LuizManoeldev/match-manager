@@ -12,8 +12,8 @@ import {MatchFirestoreService} from "../../../shared/services/match-firestore.se
 })
 export class DetailsMatchComponent {
   match: Match = new Match()
-  jogador: Jogador = new Jogador("", false, 0)
-  rankeamento = [1, 2, 3, 4, 5]
+  jogador: Jogador = new Jogador('', false, 0)
+  scores = [1, 2, 3, 4, 5]
 
   displayedColumns = ['nome', 'capitao', 'score', 'actions']
   constructor(private MatchService: MatchFirestoreService,
@@ -35,21 +35,26 @@ export class DetailsMatchComponent {
 
 
   addJogador(){
-    this.match.jogadores = this.match.jogadores.concat(this.jogador)
+    const object = {
+      "nome": this.jogador.nome,
+      "capitao": this.jogador.capitao,
+      "score": this.jogador.score
+    }
+
+    this.match.jogadores = this.match.jogadores.concat(object)
     this.cdr.detectChanges();
     this.MatchService.update(this.match).subscribe(()=> {
     })
-
     this.jogador = new Jogador('', false, 0)
   }
 
   deleteJogador(nome: string){
+    // @ts-ignore
     this.match.jogadores = this.match.jogadores.filter(jogador => jogador.nome !== nome);
     this.cdr.detectChanges();
     this.MatchService.update(this.match).subscribe(()=> {
     })
   }
-
 
   isCapitan() {
     this.jogador.capitao = true;

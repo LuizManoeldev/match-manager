@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, SimpleChanges} from '@angular/core';
 import {Match} from "../../../shared/model/match";
 import {MatchService} from "../../../shared/services/match.service"
 import {Router} from "@angular/router";
@@ -26,6 +26,7 @@ export class ListMatchComponent implements OnInit{
     console.log(this.matches);
 
   }
+
 
   getImageUrl(match: Match): string {
     const stringP = match.esporte
