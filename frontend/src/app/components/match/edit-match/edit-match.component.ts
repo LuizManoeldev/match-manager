@@ -31,8 +31,10 @@ export class EditMatchComponent {
   }
 
   salvar(){
+    const id = this.match.id
     this.MatchService.update(this.match).subscribe(()=> {
-      this.router.navigate([`/matches/details/${this.match.id}`]);
+      this.router.navigate([`/matches/details/${id}`]);
+
     })
   }
 

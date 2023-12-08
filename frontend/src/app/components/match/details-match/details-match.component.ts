@@ -31,9 +31,13 @@ export class DetailsMatchComponent {
     })
   }
 
-
-
-
+  ngOnChanges(changes: SimpleChanges){
+    const id = this.route.snapshot.paramMap.get('id') // chega ate o component por um router. Por aqui puxa os dados dessa rota
+    // @ts-ignore - ignorar que possivelmente pode ser null
+    this.MatchService.readById(id).subscribe(match => {
+      this.match = match;
+    })
+  }
   addJogador(){
     const object = {
       "nome": this.jogador.nome,

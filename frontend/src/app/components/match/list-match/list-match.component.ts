@@ -22,8 +22,6 @@ export class ListMatchComponent implements OnInit{
     this.matchService.read().subscribe(matches => {
       this.matches = matches
     })
-    console.log('estou aqui');
-    console.log(this.matches);
 
   }
 

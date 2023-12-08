@@ -41,9 +41,16 @@ export class MatchFirestoreService {
   update(Match: Match): Observable<void> {
     const id = Match.id;
     delete Match.id;
-    return from(this.colecaoMatches.doc(id).update(Object.assign({},Match)));
+    return from(this.colecaoMatches.doc(id).update(Object.assign({}, Match)));
   }
-
+//
+//
+//   listarMaioresDeIdade(): Observable<Match[]> {
+//     let MatchsMaioresIdade: AngularFirestoreCollection<Match>;
+//     // fazendo pesquisas usando o where. Um where pode ser encadeado com outro
+//     MatchsMaioresIdade = this.afs.collection(this.NOME_COLECAO, ref => ref.where('idade', '>', '17'));
+//     return MatchsMaioresIdade.valueChanges();
+//   }
 
 
 }
