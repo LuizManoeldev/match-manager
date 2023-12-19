@@ -28,15 +28,12 @@ export class MatchService {
 
   addPlayer(match: Match, jogador: Jogador) :Observable<Match>{
     const url = `${this.baseUrl}/details/${match.id}`
-    console.log(jogador)
-    console.log(match)
     return this.http.put<Match>(url, jogador)
   }
 
 
   deletePlayer(match: Match, id: string){
     const url = `${this.baseUrl}/details/${match.id}/delete`
-    console.log(id)
     return this.http.put<Match>(url, id)
   }
 

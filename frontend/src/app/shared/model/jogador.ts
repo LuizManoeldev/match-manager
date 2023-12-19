@@ -1,13 +1,13 @@
 export class Jogador{
   public id?: string;
   public nome: string;
-  public capitao: boolean;
+  public especial: boolean;
   public score: number
 
   constructor(id?: string, jogador: Partial<Jogador> = {}){
     this.id = id
     this.nome = jogador.nome || '';
-    this.capitao = jogador.capitao || false;
+    this.especial = jogador.especial || false;
     this.score = jogador.score || 0;
   }
 }

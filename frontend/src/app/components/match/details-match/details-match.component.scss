@@ -22,13 +22,35 @@ mat-icon{
   justify-content: space-between;
 }
 
-jogador{
+mat-form-field .jogador {
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content: space-between;
+}
+
+mat-form-field.jogador input{
+  width: 10rem;
+}
+mat-form-field.jogador button{
+  margin-left: 15px;
+}
+mat-form-field.jogador p{
+  font-weight: bold;
 }
 
 .capitan{
   width:25px;
   height:25px;
 }
+
+.delete{
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  margin-left: 9px;
+}
+

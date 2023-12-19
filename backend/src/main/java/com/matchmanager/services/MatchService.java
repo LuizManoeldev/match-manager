@@ -40,7 +40,7 @@ public class MatchService {
 
     }
 
-    public void addJogador(Long id, JogadorDTO jogadorDTO){
+    public Match addJogador(Long id, JogadorDTO jogadorDTO){
         Match match = this.matchRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Match não encontrado com o ID: " + id));
 
@@ -54,36 +54,25 @@ public class MatchService {
         match.addJogador(jogador);
         jogador.setMatch(match);
 
-        this.matchRepository.save(match);
-
-
+        return this.matchRepository.save(match);
 
     }
 
-    public void deleteJogador(Long matchId, Long jogadorId) {
+    public Match deleteJogador(Long matchId, Long jogadorId) {
         Match match = this.matchRepository.findById(matchId)
                 .orElseThrow(() -> new RuntimeException("Match não encontrado com o ID: " + matchId));
 
-        Jogador jogadorParaExcluir = null;
 
         for (Jogador j : match.getJogadores()) {
             if (j.getId().equals(jogadorId)) {
-               System.out.println(j.getId());
-                jogadorParaExcluir = j;
+                j.setMatch(null);
+                match.getJogadores().remove(j);
                 break;
-            } else {
-                throw new RuntimeException("Jogador n encontrado com o ID: " + jogadorId);
             }
         }
 
-        if (jogadorParaExcluir != null) {
-            match.getJogadores().remove(jogadorParaExcluir);
-            jogadorParaExcluir.setMatch(null);
+        return this.matchRepository.save(match);
 
-            this.matchRepository.save(match);
-            this.matchRepository.deleteJogadorById(jogadorId);
-
-        }
 
 
     }

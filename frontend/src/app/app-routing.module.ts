@@ -5,6 +5,7 @@ import { MainComponent } from './views/main/main.component';
 import {CreateMatchComponent} from "./components/match/create-match/create-match.component";
 import {DetailsMatchComponent} from "./components/match/details-match/details-match.component";
 import {EditMatchComponent} from "./components/match/edit-match/edit-match.component";
+import {SorteioMatchComponent} from "./components/match/sorteio-match/sorteio-match.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'matches/details/:id/edit',
     component: EditMatchComponent
+  },
+  {
+    path: 'matches/details/:id/sorteio',
+    component: SorteioMatchComponent
   }
 ];
 @NgModule({

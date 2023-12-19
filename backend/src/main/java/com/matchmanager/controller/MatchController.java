@@ -41,13 +41,13 @@ public class MatchController {
 
     }
     @PutMapping("/matches/details/{id}")
-    public void addJogador(@PathVariable("id") Long id, @RequestBody JogadorDTO jogadorDTO){
-        this.matchService.addJogador(id, jogadorDTO);
+    public Match addJogador(@PathVariable("id") Long id, @RequestBody JogadorDTO jogadorDTO){
+        return this.matchService.addJogador(id, jogadorDTO);
     }
 
     @PutMapping("/matches/details/{id}/delete")
-    public void deleteJogador(@PathVariable("id") Long MatchId, @RequestBody Long JogadorId){
-        this.matchService.deleteJogador(MatchId, JogadorId);
+    public Match deleteJogador(@PathVariable("id") Long MatchId, @RequestBody Long JogadorId){
+         return this.matchService.deleteJogador(MatchId, JogadorId);
     }
 
 }

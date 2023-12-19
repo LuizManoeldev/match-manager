@@ -6,6 +6,7 @@ import { ListMatchComponent } from './list-match/list-match.component';
 import { MaterialModule} from "../../shared/material/material.module";
 import { DetailsMatchComponent } from './details-match/details-match.component';
 import { EditMatchComponent } from './edit-match/edit-match.component';
+import { SorteioMatchComponent } from './sorteio-match/sorteio-match.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { EditMatchComponent } from './edit-match/edit-match.component';
     CreateMatchComponent,
     ListMatchComponent,
     DetailsMatchComponent,
-    EditMatchComponent
+    EditMatchComponent,
+    SorteioMatchComponent
   ],
   imports: [
     CommonModule,
