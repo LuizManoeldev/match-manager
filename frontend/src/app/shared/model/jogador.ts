@@ -1,11 +1,13 @@
 export class Jogador{
-  nome: string;
-  capitao: boolean;
-  score: number
+  public id?: string;
+  public nome: string;
+  public capitao: boolean;
+  public score: number
 
-  constructor(nome: string, capitao: boolean, score: number){
-    this.nome = nome;
-    this.capitao = capitao;
-    this.score = score;
+  constructor(id?: string, jogador: Partial<Jogador> = {}){
+    this.id = id
+    this.nome = jogador.nome || '';
+    this.capitao = jogador.capitao || false;
+    this.score = jogador.score || 0;
   }
 }

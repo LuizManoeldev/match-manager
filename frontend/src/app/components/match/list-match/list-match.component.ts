@@ -13,7 +13,7 @@ export class ListMatchComponent implements OnInit{
   matches: Match[] = [];
 
 
-  constructor(private matchService: MatchFirestoreService,
+  constructor(private matchService: MatchService,
               private router: Router) {
 
   }

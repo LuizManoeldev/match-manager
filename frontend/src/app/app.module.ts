@@ -21,6 +21,8 @@ import { MatchModule } from './components/match/match.module';
 //Firestore
 import {FirestoreModule} from './firestore/firestore.module';
 
+import {InterceptorsModule} from "./interceptors/interceptors.module";
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import {FirestoreModule} from './firestore/firestore.module';
     HttpClientModule,
     ViewsModule,
     LayoutModule,
-    FirestoreModule
+    FirestoreModule,
+    InterceptorsModule
 
   ],
   providers: [],

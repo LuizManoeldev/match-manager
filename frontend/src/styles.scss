@@ -19,6 +19,19 @@ body {
   margin: 0;
 }
 
+snack-bar-container.success {
+  background-color: #71b270;
+}
+snack-bar-container.error {
+  background-color: #c75b55;
+}
+snack-bar-container.warning {
+  background-color: #f6a634;
+}
+snack-bar-container.info {
+  background-color: #497683;
+}
+
 
 
 

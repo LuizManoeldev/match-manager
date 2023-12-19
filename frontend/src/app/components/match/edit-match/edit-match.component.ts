@@ -4,6 +4,7 @@ import {MatchService} from "../../../shared/services/match.service"
 import {Match} from "../../../shared/model/match";
 import {Jogador} from "../../../shared/model/jogador";
 import {MatchFirestoreService} from "../../../shared/services/match-firestore.service";
+import {MensagemService} from "../../../shared/services/mensagem.service";
 
 @Component({
   selector: 'app-edit-match',
@@ -15,11 +16,12 @@ export class EditMatchComponent {
 
   esportes = ["Futebol", "Volei"]
   dias_da_semana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"]
-  constructor(private MatchService: MatchFirestoreService,
+  constructor(private MatchService: MatchService,
               private router: Router,
               private route: ActivatedRoute,
               private el: ElementRef,
-              private renderer: Renderer2) {
+              private renderer: Renderer2,
+              private MensagemService: MensagemService) {
   }
 
   ngOnInit() {
@@ -32,7 +34,8 @@ export class EditMatchComponent {
 
   salvar(){
     const id = this.match.id
-    this.MatchService.update(this.match).subscribe(()=> {
+    this.MatchService.updateInfo(this.match).subscribe(()=> {
+      this.MensagemService.success(`${this.match.nome} updated successfully`);
       this.router.navigate([`/matches/details/${id}`]);
 
     })
@@ -44,6 +47,7 @@ export class EditMatchComponent {
 
   deletar(){
     this.MatchService.delete(this.match).subscribe(()=> {
+      this.MensagemService.success(`${this.match.nome} removed successfully`)
       this.router.navigate([`/matches`]);
     })
   }
