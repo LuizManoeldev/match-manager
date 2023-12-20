@@ -42,7 +42,7 @@
 
       <!-- Posicao Column -->
       <ng-container matColumnDef="capitao">
-        <th mat-header-cell *matHeaderCellDef >Capitao</th>
+        <th mat-header-cell *matHeaderCellDef >{{tipoEspecial}}</th>
         <td mat-cell *matCellDef="let row"> <mat-icon class="capitan" *ngIf="row.especial"> military_tech </mat-icon></td>
       </ng-container>
 

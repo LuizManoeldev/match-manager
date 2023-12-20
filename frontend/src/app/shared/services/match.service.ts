@@ -33,7 +33,7 @@ export class MatchService {
 
 
   deletePlayer(match: Match, id: string){
-    const url = `${this.baseUrl}/details/${match.id}/delete`
+    const url = `${this.baseUrl}/details/${match.id}/delete/${id}`
     return this.http.put<Match>(url, id)
   }
 

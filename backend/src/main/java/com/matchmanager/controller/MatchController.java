@@ -31,8 +31,8 @@ public class MatchController {
     }
 
     @PutMapping("/matches/details/{id}/edit")
-    public Match updateMatch(@RequestBody Match match){
-        return this.matchService.update(match);
+    public Match updateMatchInfos(@RequestBody Match match){
+        return this.matchService.updateMatchInfos(match);
     }
 
     @DeleteMapping("/matches/{id}")
@@ -45,8 +45,8 @@ public class MatchController {
         return this.matchService.addJogador(id, jogadorDTO, special);
     }
 
-    @PutMapping("/matches/details/{id}/delete")
-    public Match deleteJogador(@PathVariable("id") Long MatchId, @RequestBody Long JogadorId){
+    @PutMapping("/matches/details/{id}/delete/{id_jogador}")
+    public Match deleteJogador(@PathVariable("id") Long MatchId, @PathVariable("id_jogador") Long JogadorId){
          return this.matchService.deleteJogador(MatchId, JogadorId);
     }
 

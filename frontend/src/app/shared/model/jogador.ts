@@ -10,4 +10,8 @@ export class Jogador{
     this.especial = jogador.especial || false;
     this.score = jogador.score || 0;
   }
+
+  toString(): string{
+    return this.nome
+  }
 }

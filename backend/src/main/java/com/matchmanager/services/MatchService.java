@@ -31,8 +31,16 @@ public class MatchService {
         return this.matchRepository.save(match);
     }
 
-    public Match update(Match match){
-        return this.matchRepository.save(match);
+    public Match updateMatchInfos(Match match){
+
+        Match match_r = this.matchRepository.findById( match.getId())
+                .orElseThrow(() -> new RuntimeException("Match não encontrado com o ID: " + match.getId()));
+
+        match_r.setNome(match.getNome());
+        match_r.setEsporte(match.getEsporte());
+        match_r.setDia_da_semana(match.getDia_da_semana());
+
+        return this.matchRepository.save(match_r);
     }
 
     public void delete(Long id){

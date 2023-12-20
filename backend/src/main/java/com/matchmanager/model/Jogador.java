@@ -12,6 +12,7 @@ public class Jogador {
     private boolean especial;
     private Integer score;
     @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "match_id")
     @JsonIgnore
     private Match match;
 

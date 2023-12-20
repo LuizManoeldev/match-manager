@@ -52,7 +52,6 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
       "score": this.jogador.score
     }
 
-    console.log(JogadorDTO.especial)
 
     this.cdr.detectChanges();
     this.match.jogadores = this.match.jogadores.concat(JogadorDTO)
