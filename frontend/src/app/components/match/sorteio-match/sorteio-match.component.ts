@@ -24,7 +24,7 @@ export class SorteioMatchComponent implements OnInit{
     this.MatchService.readById(id).subscribe(match => {
       // @ts-ignore
       this.jogadores = match.jogadores;
-
+      console.log(this.jogadores)
     })
 
   }

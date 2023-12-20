@@ -40,14 +40,14 @@ public class MatchService {
 
     }
 
-    public Match addJogador(Long id, JogadorDTO jogadorDTO){
+    public Match addJogador(Long id, JogadorDTO jogadorDTO, Boolean especial){
         Match match = this.matchRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Match não encontrado com o ID: " + id));
 
 
         Jogador jogador = new Jogador();
         jogador.setNome(jogadorDTO.getNome());
-        jogador.setCapitao(jogadorDTO.isCapitao());
+        jogador.setEspecial(especial);
         jogador.setScore(jogadorDTO.getScore());
 
 
@@ -65,8 +65,8 @@ public class MatchService {
 
         for (Jogador j : match.getJogadores()) {
             if (j.getId().equals(jogadorId)) {
-                j.setMatch(null);
                 match.getJogadores().remove(j);
+                j.setMatch(null);
                 break;
             }
         }

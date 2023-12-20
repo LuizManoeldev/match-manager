@@ -9,7 +9,7 @@ public class Jogador {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private boolean capitao;
+    private boolean especial;
     private Integer score;
     @ManyToOne(fetch=FetchType.LAZY)
     @JsonIgnore
@@ -28,12 +28,12 @@ public class Jogador {
         this.nome = nome;
     }
 
-    public boolean isCapitao() {
-        return capitao;
+    public boolean isEspecial() {
+        return especial;
     }
 
-    public void setCapitao(boolean capitao) {
-        this.capitao = capitao;
+    public void setEspecial(boolean Especial) {
+        this.especial = Especial;
     }
 
     public Integer getScore() {

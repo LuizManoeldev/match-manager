@@ -1,26 +1,27 @@
 .sidenav{
-    background-color: #262627;
+  background-color: #262627;
     width:200px;
-
-
   }
 
-  .align{
+.align{
     vertical-align: middle;
-  }
+}
 
-  .sidenav i {
+.sidenav i {
     padding-right: 10px;
+}
 
-  }
-
-  .text-white{
+.text-white{
     color: #ffffff;
-  }
+}
 
-  .content{
-    padding: 16px;
-    background-image: url(../../../../assets/images/background-1.jpg);
-    background-size: cover;
-    height: 100vh;
-  }
+.content{
+  padding: 16px;
+  background-image: url(../../../../assets/images/background-1.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+mat-sidenav-container{
+  background-color: #262627
+}
+

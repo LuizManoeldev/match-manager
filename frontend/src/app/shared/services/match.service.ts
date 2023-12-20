@@ -27,7 +27,7 @@ export class MatchService {
   }
 
   addPlayer(match: Match, jogador: Jogador) :Observable<Match>{
-    const url = `${this.baseUrl}/details/${match.id}`
+    const url = `${this.baseUrl}/details/${match.id}/${jogador.especial}`
     return this.http.put<Match>(url, jogador)
   }
 

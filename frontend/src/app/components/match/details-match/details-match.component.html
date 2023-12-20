@@ -26,7 +26,7 @@
       <mat-radio-button *ngFor= "let score of scores"  [value]="score">{{score}} </mat-radio-button>
     </mat-radio-group>
     <button mat-raised-button (click)="addJogador()"> ADD </button>
-      <a routerLink="sorteio">Gerar Sorteio</a>
+      <button mat-raised-button (click)="gerarSorteio()"> GERAR SORTEIO </button>
     </span>
   </mat-form-field>
 
@@ -43,7 +43,7 @@
       <!-- Posicao Column -->
       <ng-container matColumnDef="capitao">
         <th mat-header-cell *matHeaderCellDef >Capitao</th>
-        <td mat-cell *matCellDef="let row"> <mat-icon class="capitan" *ngIf="row.capitao"> military_tech </mat-icon></td>
+        <td mat-cell *matCellDef="let row"> <mat-icon class="capitan" *ngIf="row.especial"> military_tech </mat-icon></td>
       </ng-container>
 
       <!-- Score Column -->

@@ -52,6 +52,8 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
       "score": this.jogador.score
     }
 
+    console.log(JogadorDTO.especial)
+
     this.cdr.detectChanges();
     this.match.jogadores = this.match.jogadores.concat(JogadorDTO)
     this.MatchService.addPlayer(this.match, JogadorDTO).subscribe(()=> {
@@ -75,5 +77,9 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
   isEspecial() {
     this.jogador.especial = true;
     this.cdr.detectChanges();
+  }
+
+  gerarSorteio() {
+    this.router.navigate([`matches/details/${this.match.id}/sorteio`])
   }
 }

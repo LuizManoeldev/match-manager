@@ -9,12 +9,16 @@ public class JogadorDTO {
         this.nome = nome;
     }
 
-    public boolean isCapitao() {
-        return capitao;
+    public boolean isEspecial() {
+        return especial;
     }
 
-    public void setCapitao(boolean capitao) {
-        this.capitao = capitao;
+    public void setEspecial(boolean especial) {
+        this.especial = especial;
+    }
+
+    public boolean getEspecial(){
+        return this.especial;
     }
 
     public Integer getScore() {
@@ -27,7 +31,7 @@ public class JogadorDTO {
 
 
     private String nome;
-    private boolean capitao;
+    private boolean especial;
     private Integer score;
 
     // getters e setters
