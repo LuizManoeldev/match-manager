@@ -11,21 +11,21 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class SorteioMatchComponent implements OnInit{
   jogadores=  [];
-  numero_times = 2
-  qtd_jogadores_por_time = 4
+  numero_times = 0
+  qtd_jogadores_por_time = 0
   tipoEspecial = ''
 
   times_sorteados: any[] | undefined
 
-
   constructor(private MatchService: MatchService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private MensagemService: MensagemService) {
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')
-    // @ts-ignore
+    // @ts-ignorecd
     this.MatchService.readById(id).subscribe(match => {
       // @ts-ignore
       this.jogadores = match.jogadores;
@@ -35,10 +35,24 @@ export class SorteioMatchComponent implements OnInit{
   }
 
   realizarSorteio() {
-    if (this.jogadores.length < this.numero_times) {
-      console.log("Não há jogadores suficientes para formar os times.");
-      return;
+    if((this.numero_times < 1)){
+      this.MensagemService.error("Numero de times invalido")
+      return
+    } else if(this.qtd_jogadores_por_time < 1){
+      this.MensagemService.error("Numero de jogadores invalido")
+      return
+    }else if(this.jogadores.length < 1){
+      this.MensagemService.error("Sem jogadores")
+      return
     }
+    const embaralharJogadores = (array: string | any[]) => {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        // @ts-ignore
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    };
+    embaralharJogadores(this.jogadores);
 
     // @ts-ignore
     this.jogadores.sort((a, b) => b.score - a.score);
@@ -58,20 +72,23 @@ export class SorteioMatchComponent implements OnInit{
         times[timeIndex].jogadorEspecial = jogador;
       } else {
         times[timeIndex].jogadores.push(jogador);
+        // @ts-ignore
+        times[timeIndex].totalScore += jogador.score;
       }
     }
 
-    // Se um time terminar com menos jogadores do que o desejado
-    // Remova o jogador especial desse time
-    // for (let i = 0; i < this.numero_times; i++) {
-    //   if (times[i].jogadores.length < this.qtd_jogadores_por_time) {
-    //     times[i].jogadores.pop();
-    //   }
-    // }
-
+    // Calcular a média dos scores para cada time
+    for (const time of times) {
+      if (time.jogadores.length > 0) {
+        time.mediaScore = time.totalScore / time.jogadores.length;
+      } else {
+        time.mediaScore = 0; // Evita divisão por zero
+      }
+    }
 
     // @ts-ignore
     this.times_sorteados = times
+    this.MensagemService.success("Sorteio realizado!")
   }
 
 

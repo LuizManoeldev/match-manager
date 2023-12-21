@@ -24,6 +24,7 @@ import {FirestoreModule} from './firestore/firestore.module';
 import {InterceptorsModule} from "./interceptors/interceptors.module";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import {InterceptorsModule} from "./interceptors/interceptors.module";
     ViewsModule,
     LayoutModule,
     FirestoreModule,
-    InterceptorsModule
+    InterceptorsModule,
+
 
   ],
   providers: [],

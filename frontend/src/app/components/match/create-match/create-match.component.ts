@@ -22,8 +22,20 @@ export class CreateMatchComponent {
   }
 
   createMatch(){
+    const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?: [a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/;
+    if(!nomeRegex.test(this.match.nome.trim())){
+      this.MensagemService.error(`Digite um nome valido`)
+      return
+    } else if(!this.match.esporte){
+      this.MensagemService.error(`Digite um esporte valido`)
+      return
+    } else if(!this.match.dia_da_semana){
+      this.MensagemService.error(`Digite um dia da semana valido`)
+      return
+    }
+
     this.MatchService.create(this.match).subscribe(()=> {
-      this.MensagemService.success(`${this.match.nome} created successfully`)
+      this.MensagemService.success(`${this.match.nome} criado!`)
       this.router.navigate(['/matches'])
     })
   }

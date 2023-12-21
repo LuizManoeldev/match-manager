@@ -26,12 +26,13 @@
       <mat-card-title>Time {{ i + 1 }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div *ngFor="let jogador of time.jogadores">
-        {{ jogador.nome }} [ {{jogador.score}} ]
-      </div>
       <div *ngIf="time.jogadorEspecial">
-        {{tipoEspecial}}: {{ time.jogadorEspecial.nome }} [ {{ time.jogadorEspecial.score }} ]
+        <h3><b>{{ time.jogadorEspecial.nome }} - [ {{ time.jogadorEspecial.score }} ]</b></h3>
       </div>
+      <div *ngFor="let jogador of time.jogadores">
+        <h3> {{ jogador.nome }} - [ {{jogador.score}} ] </h3>
+      </div>
+
     </mat-card-content>
   </mat-card>
 </div>

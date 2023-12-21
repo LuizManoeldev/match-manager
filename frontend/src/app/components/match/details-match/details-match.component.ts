@@ -46,17 +46,25 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
 
 
   addJogador(){
+    const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?: [a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/;
+
     const JogadorDTO = {
       "nome": this.jogador.nome,
       "especial": this.jogador.especial,
       "score": this.jogador.score
     }
-
+     if(!nomeRegex.test(this.jogador.nome.trim())){
+       this.MensagemService.error(`Digite o nome do jogador`)
+       return
+     } else if(this.jogador.score < 1){
+      this.MensagemService.error('Escolha o score');
+      return
+     }
 
     this.cdr.detectChanges();
     this.match.jogadores = this.match.jogadores.concat(JogadorDTO)
     this.MatchService.addPlayer(this.match, JogadorDTO).subscribe(()=> {
-      this.MensagemService.success(`${JogadorDTO.nome} added successfully`);
+      this.MensagemService.success(`${JogadorDTO.nome} adicionado!`);
     })
 
     this.jogador = new Jogador()

@@ -33,9 +33,23 @@ export class EditMatchComponent {
   }
 
   salvar(){
+    const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?: [a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/;
+
+    if(!nomeRegex.test(this.match.nome.trim())){
+      this.MensagemService.error(`Digite um nome valido`)
+      return
+    } else if(!this.match.esporte){
+      this.MensagemService.error(`Digite um esporte valido`)
+      return
+    } else if(!this.match.dia_da_semana){
+      this.MensagemService.error(`Digite um dia da semana valido`)
+      return
+    }
+
+
     const id = this.match.id
     this.MatchService.updateInfo(this.match).subscribe(()=> {
-      this.MensagemService.success(`${this.match.nome} updated successfully`);
+      this.MensagemService.success(`${this.match.nome} atualizado!`);
       this.router.navigate([`/matches/details/${id}`]);
 
     })

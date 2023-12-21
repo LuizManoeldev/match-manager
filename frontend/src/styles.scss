@@ -8,7 +8,7 @@ body {
   margin: 0;
 }
 
-snack-bar-container.success {
+mat-mdc-snack-bar.success {
   background-color: #71b270;
 }
 snack-bar-container.error {
@@ -20,7 +20,5 @@ snack-bar-container.warning {
 snack-bar-container.info {
   background-color: #497683;
 }
-
-
 
 

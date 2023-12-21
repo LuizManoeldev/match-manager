@@ -27,7 +27,7 @@ export class MensagemService {
     const config = new MatSnackBarConfig();
     config.duration = 10000;
     config.politeness = 'assertive';
-    config.panelClass = [extraClasses[0]];
+    config.panelClass = extraClasses;
     this.snackBar.open(mensagem, 'X', config);
   }
 }

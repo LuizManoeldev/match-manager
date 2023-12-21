@@ -8,6 +8,7 @@ import com.matchmanager.repositories.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
 @Service
 public class MatchService {
@@ -78,7 +79,6 @@ public class MatchService {
                 break;
             }
         }
-
         return this.matchRepository.save(match);
 
 

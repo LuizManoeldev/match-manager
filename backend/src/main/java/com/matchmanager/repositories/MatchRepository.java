@@ -11,12 +11,4 @@ import java.util.Optional;
 
 public interface MatchRepository extends JpaRepository<Match, Long> {
 
-    @Modifying
-    @Query("DELETE FROM Match match WHERE match.id = :matchId AND EXISTS (SELECT 1 FROM match.jogadores jogador WHERE jogador.id = :jogadorId)")
-    void deleteJogadorFromMatch(@Param("matchId") Long matchId, @Param("jogadorId") Long jogadorId);
-
-    @Modifying
-    @Query("DELETE FROM Jogador jogador WHERE jogador.id = :jogadorId")
-    void deleteJogadorById(@Param("jogadorId") Long jogadorId);
-
 }
