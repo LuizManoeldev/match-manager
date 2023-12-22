@@ -1,20 +1,32 @@
-.header {
+mat-toolbar {
   display: flex;
   align-items: center;
   background-color: white;
 }
 
-.header a{
+mat-toolbar a{
   display: flex;
   align-items: center;
   text-decoration: none;
   color: black;
 }
 
-.header .logo{
+mat-toolbar .logo{
   max-height: 32px;
 }
 
-.header .title-group{
+mat-toolbar .title-group{
   padding-left: 25px;
+}
+
+#logo{
+  background-image: url(../../../../assets/images/logotest.png);
+  height: 3rem;
+  width: 15rem;
+}
+
+
+@media (max-width: 600px) {
+
+
 }

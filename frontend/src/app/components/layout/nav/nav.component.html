@@ -1,22 +1,23 @@
-<mat-sidenav-container class="container">
-    <mat-sidenav class="sidenav" mode="side" opened
-        fixedInViewport="true" fixedTopGap="64">
-        <mat-nav-list>
-            <a mat-list-item routerLink="/">
-                <i class="material-icons text-white align">
-                    home
-                </i>
-                <span class="text-white align">Home</span>
-            </a>
-            <a mat-list-item routerLink="/matches">
-                <i class="material-icons text-white align">
-                    scoreboard
-                </i>
-                <span class="text-white align">Matches</span>
-            </a>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content class="content">
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+<mat-sidenav-container>
+  <!-- Botão de Navegação -->
+  <!-- Sidenav -->
+  <mat-sidenav mode="side" opened fixedInViewport="true" fixedTopGap="64">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">
+        <i class="material-icons align">
+          home
+        </i>
+        <span>Home</span>
+      </a>
+      <a mat-list-item routerLink="/matches">
+        <i class="material-icons align">
+          scoreboard
+        </i>
+        <span >Matches</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>
