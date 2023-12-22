@@ -1,24 +1,35 @@
-<h1> New Match</h1>
+<h1>ADICIONAR</h1>
 <mat-card>
-  <mat-form-field class="selection">
-    <input matInput [(ngModel)]="match.nome" placeholder="Nome">
+  <mat-form-field hintLabel="Max 35">
+    <mat-label>Nome</mat-label>
+    <input matInput #input maxlength="35" [(ngModel)]="match.nome" placeholder="Nome" >
+    <mat-hint align="end">{{input.value.length}}/35</mat-hint>
   </mat-form-field>
 
-  <div class="selection-container">
-  <label>Esporte</label>
-  <mat-radio-group class="example-radio-group" [(ngModel)]="match.esporte">
-    <mat-radio-button *ngFor= "let esporte of esportes" class="example-radio-button" [value]="esporte">{{esporte}}</mat-radio-button>
-  </mat-radio-group>
+  <mat-form-field>
+    <mat-label>Esporte</mat-label>
+    <mat-select [(ngModel)]="match.esporte">
+      <mat-option value="Futebol">Futebol</mat-option>
+      <mat-option value="Volei">Volei</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <label>Dia da Semana</label>
-  <mat-radio-group class="example-radio-group" [(ngModel)]="match.dia_da_semana">
-    <mat-radio-button *ngFor= "let dia of dias_da_semana" class="example-radio-button" [value]="dia">{{dia}}</mat-radio-button>
-  </mat-radio-group>
-  </div>
+  <mat-form-field>
+    <mat-label>Dia da semana</mat-label>
+    <mat-select [(ngModel)]="match.dia_da_semana">
+      <mat-option value="Segunda">Segunda</mat-option>
+      <mat-option value="Terca">Terça</mat-option>
+      <mat-option value="Quarta">Quarta</mat-option>
+      <mat-option value="Quinta">Quinta</mat-option>
+      <mat-option value="Sexta">Sexta</mat-option>
+      <mat-option value="Sabado">Sabado</mat-option>
+      <mat-option value="Domingo">Domingo</mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <span>
-        <button mat-raised-button (click)="createMatch()" color="primary"> Salvar </button>
-        <button mat-raised-button (click)="cancel()"> Cancelar </button>
-    </span>
+      <button mat-raised-button (click)="createMatch()" color="primary"> Salvar </button>
+      <button mat-raised-button (click)="cancel()"> Cancelar </button>
+  </span>
 </mat-card>
 

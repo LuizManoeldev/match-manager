@@ -12,6 +12,8 @@ import {MensagemService} from "../../../shared/services/mensagem.service";
   styleUrls: ['./create-match.component.scss']
 })
 export class CreateMatchComponent {
+
+
   match: Match = new Match()
   esportes = ["Futebol", "Volei"]
   dias_da_semana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"]
@@ -22,25 +24,30 @@ export class CreateMatchComponent {
   }
 
   createMatch(){
-    const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?: [a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/;
-    if(!nomeRegex.test(this.match.nome.trim())){
-      this.MensagemService.error(`Digite um nome valido`)
-      return
-    } else if(!this.match.esporte){
-      this.MensagemService.error(`Digite um esporte valido`)
-      return
-    } else if(!this.match.dia_da_semana){
-      this.MensagemService.error(`Digite um dia da semana valido`)
-      return
-    }
-
-    this.MatchService.create(this.match).subscribe(()=> {
-      this.MensagemService.success(`${this.match.nome} criado!`)
-      this.router.navigate(['/matches'])
-    })
+    if(this.validate())
+      this.MatchService.create(this.match).subscribe(()=> {
+        this.MensagemService.success(`${this.match.nome} criado!`)
+        this.router.navigate(['/matches'])
+      })
   }
 
   cancel() {
     this.router.navigate(['/matches'])
+  }
+
+  validate():boolean{
+    const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?: [a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/;
+    if(!nomeRegex.test(this.match.nome.trim())){
+      this.MensagemService.error(`Digite um nome valido`)
+      return false
+    } else if(!this.match.esporte){
+      this.MensagemService.error(`Digite um esporte valido`)
+      return false
+    } else if(!this.match.dia_da_semana){
+      this.MensagemService.error(`Digite um dia da semana valido`)
+      return false
+    }else{
+      return true
+    }
   }
 }
