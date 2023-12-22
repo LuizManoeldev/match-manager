@@ -1,41 +1,29 @@
-.day-selection{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.day-selection mat-list-option{
-  width: 10rem;
-  font-size: 1px;
-}
-
-.sport-selection{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.sport-selection mat-list-option{
-  width: 10rem;
-  font-size: 1px;
-
-}
-.sport-selection mat-list-option:nth-child(2){
-  margin-left:2.34rem;
-}
-
 button{
-  width: 12%;
-  margin: 20px 15px 15px 15px;
-  font-size: 0.9rem;
+  width: 10%;
+  margin: 1rem;
+}
+button:nth-child(3){
+  width: 20%;
+  margin: 1rem;
 }
 
-.selection-container{
-  display: flex;
-  flex-direction: column;
+mat-form-field{
+  height:5rem;
+  margin: 0.9rem 0.5rem 0 0.5rem ;
 }
 
-.selection-container mat-radio-group{
-  display: flex;
-  flex-direction: row;
+h1{
+  box-shadow: #262627;
 }
+@media (max-width: 600px) {
+  button {
+    width: 30%;
+  }
+  span {
+    text-align: center
+  }
+}
+
+
+
 
