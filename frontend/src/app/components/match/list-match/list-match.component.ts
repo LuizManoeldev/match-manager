@@ -1,4 +1,4 @@
-import {Component, OnInit, SimpleChanges} from '@angular/core';
+import {Component, HostListener, OnInit, SimpleChanges} from '@angular/core';
 import {Match} from "../../../shared/model/match";
 import {MatchService} from "../../../shared/services/match.service"
 import {Router} from "@angular/router";
@@ -12,7 +12,6 @@ import {MatchFirestoreService} from "../../../shared/services/match-firestore.se
 export class ListMatchComponent implements OnInit{
   matches: Match[] = [];
 
-
   constructor(private matchService: MatchService,
               private router: Router) {
 
@@ -22,7 +21,12 @@ export class ListMatchComponent implements OnInit{
     this.matchService.read().subscribe(matches => {
       this.matches = matches
     })
+  }
 
+
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 

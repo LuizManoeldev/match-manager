@@ -2,6 +2,7 @@ mat-toolbar {
   display: flex;
   align-items: center;
   background-color: white;
+  justify-content: space-between;
 }
 
 mat-toolbar a{
@@ -11,22 +12,40 @@ mat-toolbar a{
   color: black;
 }
 
-mat-toolbar .logo{
-  max-height: 32px;
+.secundary-nav {
+  width: 0;
 }
 
-mat-toolbar .title-group{
-  padding-left: 25px;
-}
 
 #logo{
+  background-size: cover;
   background-image: url(../../../../assets/images/logotest.png);
   height: 3rem;
-  width: 15rem;
+  width: 19rem;
 }
 
 
 @media (max-width: 600px) {
+   #logo {
+     width: 8.8rem;
+   }
 
+  .secundary-nav{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 1rem;
+    font-size: 1rem;
+
+  }
+  .secundary-nav a{
+    width: 5rem;
+    padding-left: 0rem  ;
+    color: rgba(38,38,39,0.62)
+  }
+  .secundary-nav a:nth-child(1){
+    width: 4rem;
+
+  }
 
 }

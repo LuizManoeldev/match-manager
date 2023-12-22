@@ -1,27 +1,27 @@
-<div class="cards">
-<mat-card class="match-card" *ngFor="let match of matches">
-    <mat-card-header>
-      <mat-card-title>{{match.nome | titlecase}}</mat-card-title>
-<!--      <mat-card-subtitle>{{match.esporte}}</mat-card-subtitle>-->
-    </mat-card-header>
-    <img mat-card-image [src]="getImageUrl(match)" alt="jogador">
-    <mat-card-content>
-      <p>
-      <i class="material-icons v-midle" >
-            event
-        </i> {{match.dia_da_semana}}
-      </p>
-      <p>
-      <i class="material-icons v-midle" >
-            person
-        </i> {{match.jogadores.length}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <a routerLink="details/{{match.id}}" mat-icon-button ><mat-icon>menu</mat-icon></a>
-    </mat-card-actions>
-</mat-card>
-<button class="add-button" mat-fab (click)="navegateToMatchCreate()">
-  <mat-icon>add</mat-icon>
-</button>
+<div class="cards-container">
+  <mat-card *ngFor="let match of matches">
+      <mat-card-header>
+        <mat-card-title>{{match.nome | titlecase}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="getImageUrl(match)" alt="jogador">
+      <mat-card-content>
+        <p>
+        <i class="material-icons v-midle" >
+              event
+          </i> {{match.dia_da_semana}}
+        </p>
+        <p>
+        <i class="material-icons v-midle" >
+              person
+          </i> {{match.jogadores.length}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a routerLink="details/{{match.id}}" mat-icon-button ><mat-icon>menu</mat-icon></a>
+      </mat-card-actions>
+  </mat-card>
+  <span class="buttons">
+  <button id="add-button" mat-fab (click)="navegateToMatchCreate()"> <mat-icon>add</mat-icon> </button>
+  <button id="up-page" mat-fab (click)="scrollToTop()"> <mat-icon>keyboard_double_arrow_up</mat-icon> </button>
+  </span>
 </div>

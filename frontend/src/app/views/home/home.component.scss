@@ -1,14 +1,30 @@
-.home .title{
-    font-size: 3rem; /*Medida responsiva(relativo)*/
+mat-card-title{
+    font-size: 3rem;
     font-weight: 300;
     line-height: 1.1;
 }
 
-.home .subtile{
+mat-card-subtile{
     font-size:1.1rem;
-
 }
 
 mat-card{
     padding: 10px;
 }
+
+@media (max-width: 600px) {
+  mat-card-title{
+    font-size: 1.5rem; /*Medida responsiva(relativo)*/
+    font-weight: 300;
+    line-height: 1.1;
+  }
+
+  mat-card-subtile{
+    font-size:0.5rem;
+  }
+
+  mat-card{
+    padding: 0.5rem;
+  }
+}
+
