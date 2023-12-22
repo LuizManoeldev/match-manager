@@ -13,10 +13,7 @@ import {MensagemService} from "../../../shared/services/mensagem.service";
 })
 export class CreateMatchComponent {
 
-
   match: Match = new Match()
-  esportes = ["Futebol", "Volei"]
-  dias_da_semana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"]
 
   constructor(private MatchService: MatchService,
               private router: Router,

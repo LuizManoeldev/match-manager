@@ -14,8 +14,6 @@ import {MensagemService} from "../../../shared/services/mensagem.service";
 export class EditMatchComponent {
   match: Match = new Match();
 
-  esportes = ["Futebol", "Volei"]
-  dias_da_semana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"]
   constructor(private MatchService: MatchService,
               private router: Router,
               private route: ActivatedRoute,
@@ -33,26 +31,14 @@ export class EditMatchComponent {
   }
 
   salvar(){
-    const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?: [a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/;
+    if(this.validate()) {
+      const id = this.match.id
+      this.MatchService.updateInfo(this.match).subscribe(() => {
+        this.MensagemService.success(`${this.match.nome} atualizado!`);
+        this.router.navigate([`/matches/details/${id}`]);
 
-    if(!nomeRegex.test(this.match.nome.trim())){
-      this.MensagemService.error(`Digite um nome valido`)
-      return
-    } else if(!this.match.esporte){
-      this.MensagemService.error(`Digite um esporte valido`)
-      return
-    } else if(!this.match.dia_da_semana){
-      this.MensagemService.error(`Digite um dia da semana valido`)
-      return
+      })
     }
-
-
-    const id = this.match.id
-    this.MatchService.updateInfo(this.match).subscribe(()=> {
-      this.MensagemService.success(`${this.match.nome} atualizado!`);
-      this.router.navigate([`/matches/details/${id}`]);
-
-    })
   }
 
   cancelar(){
@@ -64,6 +50,22 @@ export class EditMatchComponent {
       this.MensagemService.success(`${this.match.nome} removed successfully`)
       this.router.navigate([`/matches`]);
     })
+  }
+
+  validate():boolean{
+    const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?: [a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/;
+    if(!nomeRegex.test(this.match.nome.trim())){
+      this.MensagemService.error(`Digite um nome valido`)
+      return false
+    } else if(!this.match.esporte){
+      this.MensagemService.error(`Digite um esporte valido`)
+      return false
+    } else if(!this.match.dia_da_semana){
+      this.MensagemService.error(`Digite um dia da semana valido`)
+      return false
+    }else{
+      return true
+    }
   }
 
 }
