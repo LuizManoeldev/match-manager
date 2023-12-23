@@ -15,7 +15,7 @@ export class CreateMatchComponent {
 
   match: Match = new Match()
 
-  constructor(private MatchService: MatchService,
+  constructor(private MatchService: MatchFirestoreService,
               private router: Router,
               private MensagemService: MensagemService) {
   }

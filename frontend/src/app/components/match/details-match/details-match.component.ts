@@ -16,10 +16,10 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
   jogador: Jogador = new Jogador()
   scores = [1, 2, 3, 4, 5]
   tipoEspecial = ''
-  displayedColumns = ['nome', 'capitao', 'score', 'actions']
+  displayedColumns = ['nome', 'score', 'actions']
 
 
-  constructor(private MatchService: MatchService,
+  constructor(private MatchService: MatchFirestoreService,
               private router: Router,
               private route: ActivatedRoute,
               private el: ElementRef,
@@ -50,18 +50,18 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
     const JogadorDTO = {
       "nome": this.jogador.nome,
       "especial": this.jogador.especial,
-      "score": parseInt(String(this.jogador.score), 1)
+      "score": parseInt(String(this.jogador.score))
     }
 
-    this.validate(JogadorDTO)
-
-    this.cdr.detectChanges();
-    this.match.jogadores = this.match.jogadores.concat(JogadorDTO)
-    this.MatchService.addPlayer(this.match, JogadorDTO).subscribe(()=> {
-      this.MensagemService.success(`${JogadorDTO.nome} adicionado!`);
-    })
-
-    this.jogador = new Jogador()
+    console.log(JogadorDTO)
+    if(this.validate(JogadorDTO)) {
+      this.cdr.detectChanges();
+      this.match.jogadores = this.match.jogadores.concat(JogadorDTO)
+      this.MatchService.update(this.match).subscribe(() => {
+        this.MensagemService.success(`${JogadorDTO.nome} adicionado!`);
+      })
+      this.jogador = new Jogador
+    }
   }
 
   deleteJogador(jogador: Jogador){
@@ -70,7 +70,7 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
     this.cdr.detectChanges()
 
     // @ts-ignore
-    this.MatchService.deletePlayer(this.match, jogador.id).subscribe(()=> {
+    this.MatchService.update(this.match).subscribe(()=> {
       this.MensagemService.success(`${jogador.nome} removed successfully`);
     })
   }

@@ -12,7 +12,7 @@ import {MatchFirestoreService} from "../../../shared/services/match-firestore.se
 export class ListMatchComponent implements OnInit{
   matches: Match[] = [];
 
-  constructor(private matchService: MatchService,
+  constructor(private matchService: MatchFirestoreService,
               private router: Router) {
 
   }

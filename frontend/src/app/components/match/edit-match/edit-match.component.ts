@@ -14,7 +14,7 @@ import {MensagemService} from "../../../shared/services/mensagem.service";
 export class EditMatchComponent {
   match: Match = new Match();
 
-  constructor(private MatchService: MatchService,
+  constructor(private MatchService: MatchFirestoreService,
               private router: Router,
               private route: ActivatedRoute,
               private el: ElementRef,
@@ -33,7 +33,7 @@ export class EditMatchComponent {
   salvar(){
     if(this.validate()) {
       const id = this.match.id
-      this.MatchService.updateInfo(this.match).subscribe(() => {
+      this.MatchService.update(this.match).subscribe(() => {
         this.MensagemService.success(`${this.match.nome} atualizado!`);
         this.router.navigate([`/matches/details/${id}`]);
 

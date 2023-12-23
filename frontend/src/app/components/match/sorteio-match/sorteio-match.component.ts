@@ -4,6 +4,7 @@ import {Jogador} from "../../../shared/model/jogador";
 import {MensagemService} from "../../../shared/services/mensagem.service"
 import {MatchService} from "../../../shared/services/match.service"
 import {ActivatedRoute, Router} from "@angular/router";
+import {MatchFirestoreService} from "../../../shared/services/match-firestore.service";
 @Component({
   selector: 'app-sorteio-match',
   templateUrl: './sorteio-match.component.html',
@@ -17,7 +18,7 @@ export class SorteioMatchComponent implements OnInit{
 
   times_sorteados: any[] | undefined
 
-  constructor(private MatchService: MatchService,
+  constructor(private MatchService: MatchFirestoreService,
               private router: Router,
               private route: ActivatedRoute,
               private MensagemService: MensagemService) {
