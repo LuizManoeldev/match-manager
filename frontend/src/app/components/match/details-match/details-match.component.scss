@@ -1,42 +1,67 @@
-mat-card{
-  height: 100vh;
-  background-color: rgba(38,38,39,0.62);
-
-}
-
 mat-card-title{
+  height: 10rem;
+  background-image: url("../../../../assets/images/black_wall.jpg");
   padding: 20px;
   padding-bottom: 0px;
-  font-size:5rem;
-  font-weight: bold;
-  border-radius: 15px;
+
+  h1, h2{
+    font-family:'Roboto', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+
+  }
+
+  .footer{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  mat-icon{
+    vertical-align: middle;
+  }
+
 }
 
-
-mat-icon{
-  vertical-align: middle;
-}
-
-.footer{
-  display: flex;
-  justify-content: space-between;
-}
-
-mat-form-field .jogador {
+.jogador{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  vertical-align: middle;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.04);
+
+
+
+  mat-form-field:nth-child(1){
+    //margin-top:1rem;
+    display: flex;
+    width: 20rem;
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+
+  mat-form-field:nth-child(2){
+    width: 10rem;
+  }
+
+  :last-child{
+    margin-left:1rem;
+    margin-top: 0.3rem;
+  }
+
+  button{
+    word-wrap: break-word;
+    width: 10rem;
+    padding: 1.5rem;
+  }
+
+  mat-check-box{
+    margin-top: 0.3rem;
+  }
+
 }
 
-mat-form-field.jogador input{
-  width: 10rem;
-}
-mat-form-field.jogador button{
-  margin-left: 15px;
-}
-mat-form-field.jogador p{
-  font-weight: bold;
-}
+
+
 
 .capitan{
   width:25px;

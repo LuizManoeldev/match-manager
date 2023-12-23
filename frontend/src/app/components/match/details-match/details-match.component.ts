@@ -46,20 +46,14 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
 
 
   addJogador(){
-    const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?: [a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/;
 
     const JogadorDTO = {
       "nome": this.jogador.nome,
       "especial": this.jogador.especial,
-      "score": this.jogador.score
+      "score": parseInt(String(this.jogador.score), 1)
     }
-     if(!nomeRegex.test(this.jogador.nome.trim())){
-       this.MensagemService.error(`Digite o nome do jogador`)
-       return
-     } else if(this.jogador.score < 1){
-      this.MensagemService.error('Escolha o score');
-      return
-     }
+
+    this.validate(JogadorDTO)
 
     this.cdr.detectChanges();
     this.match.jogadores = this.match.jogadores.concat(JogadorDTO)
@@ -88,5 +82,19 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
 
   gerarSorteio() {
     this.router.navigate([`matches/details/${this.match.id}/sorteio`])
+  }
+
+  validate(jogador: Jogador){
+    const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+(?: [a-zA-ZÀ-ÖØ-öø-ÿ]+)*$/;
+
+    if(!nomeRegex.test(jogador.nome.trim())){
+      this.MensagemService.error(`Digite o nome do jogador`)
+      return false
+    } else if(jogador.score < 1){
+      this.MensagemService.error('Escolha o score');
+      return false
+    } else{
+      return true
+    }
   }
 }
