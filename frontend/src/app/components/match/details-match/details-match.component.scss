@@ -8,11 +8,14 @@ mat-card{
 
 mat-card-title{
   display: flex;
-  flex-direction: column;
-  width: 97%;
+  flex-direction: row;
+  justify-content: space-between;
   height: 10rem;
   background-image: url("../../../../assets/images/black_wall.jpg");
-  padding: 20px;
+
+  mat-icon{
+    vertical-align: middle;
+  }
 
   a{
     text-decoration: none;
@@ -27,120 +30,145 @@ mat-card-title{
 
   }
 
-  .footer{
+
+  #infos{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+    width: 50%;
 
   }
 
-  mat-icon{
-    vertical-align: middle;
-  }
+  #actions{
+    width:50%;
+    text-align: right;
 
+    button{
+      width:10rem;
+    }
+  }
 }
 
 .jogador{
   display: flex;
   flex-direction: row;
-
+  justify-content: center;
   vertical-align: middle;
   height: 4rem;
   margin-top: 1rem;
 
-  mat-form-field{
+
+  .break{
     display: flex;
-    width: 20%;
-    height: 5rem;
-    border-radius: 3rem;
-    margin-left: 0.5rem;
+    flex-direction: row;
+    width:50%;
+
+    mat-form-field{
+      display: flex;
+      width: 50%;
+      height: 5rem;
+      border-radius: 3rem;
+      margin-left: 0.5rem;
+
+    }
+
+    button{
+      margin-left:1rem;
+      margin-top: 0.4rem;
+      margin-right: auto;
+      word-wrap: break-word;
+      width: 50%;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
 
   }
-  :first-child{
-    margin-left:auto;
-  }
 
-  :last-child{
-    margin-left:1rem;
-    margin-top: 0.2rem;
-    margin-right: auto;
-  }
-
-  button{
-    word-wrap: break-word;
-    width: 10rem;
-    padding: 1.5rem;
-  }
 
 }
 
+#table{
+  width:50%;
+  margin:auto;
+}
 
-.table{
-  background: rgba(255, 255, 255, 0);
-  width: 40rem;
-  margin: auto;
+table {
+  background: rgba(0, 0, 0, 0.26);
 
-  table {
-    background: rgba(17, 17, 17, 0.33);
-    width: 100%;
-    margin: auto;
+  input {
+    background: none;
+    border: none;
+    color: white;
 
-    th{
-      width:auto;
-    }
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: bold;
 
-    input {
-      background: none;
-      border: none;
-      color: white;
+    width: 5rem;
+  }
 
-      font-family: "Helvetica Neue", sans-serif;
-      font-size: 1rem;
-      font-style: italic;
-      font-weight: bold;
+  .capitan {
+    width: 25px;
+    height: 25px;
+  }
 
-      width: 4rem;
-    }
-
-    .capitan{
-      width:25px;
-      height:25px;
-    }
-
-    .delete{
-      background: none;
-      border: none;
-      padding: 0;
-      margin: 0;
-
-    }
-
+  .delete {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: white;
   }
 }
 
-@media (max-width: 600px) {
+
+
+@media (max-width: 700px) {
   mat-card-title {
-    height: 6rem;
-    padding:0.5rem;
+    height: 7rem;
+    padding:0.3rem;
 
-    h1 {
-      margin-bottom: 0;
+    #infos{
+      width: 77%;
+      padding: 0;
+      h1 {
+        margin-bottom: 0;
+      }
+
+      #edit {
+        width: 20px;
+        height: 20px;
+        vertical-align: top;
+
+      }
+
+      .sub {
+        font-size: 1rem;
+        margin-bottom: 0;
+      }
     }
 
-    #edit {
-      width: 20px;
-      height: 20px;
-      vertical-align: top;
+    #actions{
+      width: 23%;
+      margin-bottom: 1rem;
+      h1{
+        font-size:1rem;
+        margin-left:0;
 
-    }
+      }
+      button{
+        width:3.5rem;
+        font-size: 1rem;
+        height:2rem;
 
-    .sub {
-      font-size: 1rem;
-      margin-bottom: 0;
+      }
     }
   }
 
   .jogador{
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     height: 10rem;
 
     .break{
@@ -163,8 +191,6 @@ mat-card-title{
 
       }
 
-
-
       button{
         width:11rem;
         height:3.3rem;
@@ -181,14 +207,11 @@ mat-card-title{
 
   }
 
-  table{
-
-    th{
-      width:2rem;
-      margin:0;
-      align-items:left;
-    }
+  #table{
+    width:90%;
   }
+
+
 
 }
 

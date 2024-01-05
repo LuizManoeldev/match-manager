@@ -15,15 +15,21 @@ export class ErroInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      catchError(resposta => this.trataRespostaErro(resposta))
+      catchError((error: any) => this.trataRespostaErro(error))
     );
   }
 
-  private trataRespostaErro(resposta: object): Observable<HttpEvent<any>>{
-    if (resposta instanceof HttpErrorResponse){
-      this.mensagemService.error('Erro' + resposta.message);
+  private trataRespostaErro(error: any): Observable<HttpEvent<any>> {
+    if (error instanceof HttpErrorResponse) {
+      if (error.status === 401) {
+        // Lidar com erro de autenticação (por exemplo, redirecionar para a página de login)
+        this.mensagemService.error('Erro de autenticação');
+      } else {
+        // Lidar com outros erros
+        this.mensagemService.error(`Erro: ${error.message}`);
+      }
     }
-    return throwError(resposta);
-  }
 
+    return throwError(error);
+  }
 }

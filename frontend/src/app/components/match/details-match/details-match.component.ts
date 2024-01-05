@@ -53,7 +53,6 @@ export class DetailsMatchComponent implements OnInit, OnChanges {
       "score": parseInt(String(this.jogador.score))
     }
 
-    console.log(JogadorDTO)
     if(this.validate(JogadorDTO)) {
       this.cdr.detectChanges();
       this.match.jogadores = this.match.jogadores.concat(JogadorDTO)

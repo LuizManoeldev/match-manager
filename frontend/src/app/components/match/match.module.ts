@@ -7,6 +7,7 @@ import { MaterialModule} from "../../shared/material/material.module";
 import { DetailsMatchComponent } from './details-match/details-match.component';
 import { EditMatchComponent } from './edit-match/edit-match.component';
 import { SorteioMatchComponent } from './sorteio-match/sorteio-match.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -17,11 +18,12 @@ import { SorteioMatchComponent } from './sorteio-match/sorteio-match.component';
     EditMatchComponent,
     SorteioMatchComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    RouterModule
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        RouterModule,
+        FlexLayoutModule
+    ],
   exports:[
     CreateMatchComponent,
     ListMatchComponent,

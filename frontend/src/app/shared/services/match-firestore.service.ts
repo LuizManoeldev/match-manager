@@ -10,7 +10,7 @@ import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat
 export class MatchFirestoreService {
 
   colecaoMatches: AngularFirestoreCollection<Match>;
-  NOME_COLECAO = 'matches ';
+  NOME_COLECAO = 'matches';
 
   constructor(private afs: AngularFirestore) {
     this.colecaoMatches = afs.collection(this.NOME_COLECAO);
@@ -34,9 +34,7 @@ export class MatchFirestoreService {
   }
 
   update(Match: Match): Observable<void> {
-    const id = Match.id;
-    delete Match.id;
-    return from(this.colecaoMatches.doc(id).update(Object.assign({}, Match)));
+    return from(this.colecaoMatches.doc(Match.id).update(Object.assign({}, Match)));
   }
 
 }
