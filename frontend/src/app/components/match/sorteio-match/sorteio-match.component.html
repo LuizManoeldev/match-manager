@@ -11,7 +11,7 @@
 <span class="fields">
   <mat-form-field>
     NUMERO DE JOGADORES
-   <input matInput [(ngModel)]="qtd_jogadores_por_time" placeholder="Numero de jogadores">
+   <input matInput [(ngModel)]="jogadores_por_time" placeholder="Numero de jogadores">
   </mat-form-field>
    <span class="buttons">
      <button mat-mini-fab (click)="maisJogadores()"><mat-icon>arrow_drop_up</mat-icon></button>
@@ -20,15 +20,13 @@
 </span>
 <button id="sort" mat-raised-button (click)="realizarSorteio()" color="accent"> Gerar times </button>
 
+
 <div class="cards" >
-  <mat-card class="team-card" *ngFor="let time of times_sorteados; let i = index">
+  <mat-card class="team-card" *ngFor="let time of times">
     <mat-card-header>
-      <mat-card-title>Time {{ i + 1 }}</mat-card-title>
+      <mat-card-title>{{ time.nome}} - {{time.mediaDoTime()}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div *ngIf="time.jogadorEspecial">
-        <h3><b>{{ time.jogadorEspecial.nome }} - [ {{ time.jogadorEspecial.score }} ]</b></h3>
-      </div>
       <div *ngFor="let jogador of time.jogadores">
         <h3> {{ jogador.nome }} - [ {{jogador.score}} ] </h3>
       </div>

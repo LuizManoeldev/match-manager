@@ -5,23 +5,35 @@ import {MensagemService} from "../../../shared/services/mensagem.service"
 import {MatchService} from "../../../shared/services/match.service"
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatchFirestoreService} from "../../../shared/services/match-firestore.service";
+import {Time} from "../../../shared/model/time";
+
 @Component({
   selector: 'app-sorteio-match',
   templateUrl: './sorteio-match.component.html',
   styleUrls: ['./sorteio-match.component.scss']
 })
 export class SorteioMatchComponent implements OnInit{
-  jogadores=  [];
+  jogadores:Jogador[] = [];
+  times: Time[] = []
+  alfabeto = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
+
   numero_times = 0
-  qtd_jogadores_por_time = 0
+  jogadores_por_time = 0
+  forcaMedia = 0
+
   tipoEspecial = ''
 
-  times_sorteados: any[] | undefined
+  resorteio = false
+
+
+
+
 
   constructor(private MatchService: MatchFirestoreService,
               private router: Router,
               private route: ActivatedRoute,
               private MensagemService: MensagemService) {
+
   }
 
   ngOnInit() {
@@ -31,66 +43,172 @@ export class SorteioMatchComponent implements OnInit{
       // @ts-ignore
       this.jogadores = match.jogadores;
       this.tipoEspecial = match.esporte.toLowerCase() === 'volei' ? 'Levantador' : match.esporte.toLowerCase() === 'futebol' ? 'Goleiro' : 'Invalido';
+      this.getForcaMedia()
     })
 
   }
 
+
+
+// Adicione o método abaixo à sua classe SorteioMatchComponent
   realizarSorteio() {
-    if((this.numero_times < 1)){
-      this.MensagemService.error("Numero de times invalido")
-      return
-    } else if(this.qtd_jogadores_por_time < 1){
-      this.MensagemService.error("Numero de jogadores invalido")
-      return
-    }else if(this.jogadores.length < 1){
-      this.MensagemService.error("Sem jogadores")
+    if(!this.resorteio){
+      do{
+        this.preparaTimes()
+        this.montaTimes()
+      } while(!this.calculaEquilibrio())
+      this.resorteio = true
+
+    } else{
+      this.MensagemService.error(`Reinicie a pagina`)
       return
     }
-    const embaralharJogadores = (array: string | any[]) => {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        // @ts-ignore
-        [array[i], array[j]] = [array[j], array[i]];
+
+
+
+
+
+
+
+  }
+
+
+  preparaTimes(){
+    this.times = []
+    for ( let i = 0; i < this.numero_times; i++){
+      this.times.push(new Time(`Time ${this.alfabeto[i]}`, this.jogadores_por_time))
+    }
+  }
+
+  getForcaMedia() {
+    let forcaTotal = 0
+
+    for( let jogador of this.jogadores) {
+      // @ts-ignore
+      forcaTotal += jogador.score
+    }
+
+    this.forcaMedia = forcaTotal / this.jogadores.length
+
+  }
+
+  calculaEquilibrio(){
+    let forcaMinima = Number.MAX_VALUE;
+    let forcaMaxima = Number.MIN_VALUE;
+
+    for (let time of this.times) {
+      forcaMinima = Math.min(time.forca, forcaMinima);
+      forcaMaxima = Math.max(time.forca, forcaMaxima);
+    }
+
+    // Verifica se a força minima é ao menos 80% da força maxima
+    return !(forcaMinima < 0.8 * forcaMaxima)
+
+  }
+
+
+  montaTimes() {
+    this.adicionarEspeciais()
+    // Randomiza a lista de jogadores e times
+    this.shuffleArray(this.jogadores);
+    this.shuffleArray(this.times);
+
+    let itTime = this.times[Symbol.iterator]();
+    let jogadorIndex = 0;
+
+    while (this.jogadores.length > 0) {
+      const timeDaVez = itTime.next().value as Time;
+
+      if (timeDaVez.isCompleto()) {
+        continue;
       }
-    };
-    embaralharJogadores(this.jogadores);
 
-    // @ts-ignore
-    this.jogadores.sort((a, b) => b.score - a.score);
+      const jogador = this.getJogador(timeDaVez);
+      timeDaVez.addJogador(jogador);
 
-    const times: any[] = [];
+      jogadorIndex++;
 
-    for (let i = 0; i < this.numero_times; i++) {
-      times[i] = { jogadores: [], jogadorEspecial: null };
+      if (jogadorIndex === this.times.length) {
+        itTime = this.times[Symbol.iterator]();
+        jogadorIndex = 0;
+      }
+    }
+
+
+  }
+  _getJogador(forca: number) {
+    let jogadorEncontrado: Jogador | null = null;
+
+    if (this.jogadores.length === 0) {
+      return null;
+    } else if (this.jogadores.length === 1) {
+      return this.jogadores.pop();
     }
 
     for (let i = 0; i < this.jogadores.length; i++) {
       const jogador = this.jogadores[i];
-      const timeIndex = i % this.numero_times;
 
-      // @ts-ignore
-      if (times[timeIndex].jogadorEspecial === null && jogador.especial) {
-        times[timeIndex].jogadorEspecial = jogador;
-      } else {
-        times[timeIndex].jogadores.push(jogador);
-        // @ts-ignore
-        times[timeIndex].totalScore += jogador.score;
+      if (jogador.score === forca) {
+        jogadorEncontrado = jogador;
+        break;
       }
     }
 
-    // Calcular a média dos scores para cada time
-    for (const time of times) {
-      if (time.jogadores.length > 0) {
-        time.mediaScore = time.totalScore / time.jogadores.length;
-      } else {
-        time.mediaScore = 0; // Evita divisão por zero
+    if (jogadorEncontrado !== null) {
+      const index = this.jogadores.indexOf(jogadorEncontrado);
+      if (index !== -1) {
+        this.jogadores.splice(index, 1);
       }
     }
 
-    // @ts-ignore
-    this.times_sorteados = times
-    this.MensagemService.success("Sorteio realizado!")
+    return jogadorEncontrado;
   }
+
+  getJogador( timeDaVez:Time) {
+    let peso = Math.random();
+
+    if (timeDaVez.forca < this.forcaMedia) {
+      peso += Math.random();
+    } else {
+      peso -= Math.random();
+    }
+
+    let forca = 0;
+    if (peso >= 0 && peso < 0.10) {
+      // 10%
+      forca = 1;
+    } else if (peso >= 0.10 && peso < 0.25) {
+      // 15%
+      forca = 2;
+    } else if (peso >= 0.25 && peso < 0.65) {
+      // 40%
+      forca = 3;
+    } else if (peso >= 0.65 && peso < 0.95) {
+      // 30%
+      forca = 4;
+    } else if (peso >= 0.95) {
+      // 5%
+      forca = 5;
+    }
+
+    let jj = this._getJogador(forca);
+    while (jj == null && this.jogadores.length > 0)
+      jj = this.getJogador(timeDaVez);
+
+    return jj;
+  }
+
+
+
+  shuffleArray(array: any[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+
+
 
 
 
@@ -105,14 +223,73 @@ export class SorteioMatchComponent implements OnInit{
   }
 
   maisJogadores(){
-    this.qtd_jogadores_por_time += 1;
+    this.jogadores_por_time += 1;
   }
 
   menosJogadores(){
-    if(this.qtd_jogadores_por_time != 0){
-      this.qtd_jogadores_por_time -= 1;
+    if(this.jogadores_por_time != 0){
+      this.jogadores_por_time -= 1;
     }
 
+  }
+
+  validate(){
+    if((this.numero_times < 1)){
+      this.MensagemService.error("Numero de times invalido")
+      return false
+    } else if(this.jogadores_por_time < 1){
+      this.MensagemService.error("Numero de jogadores invalido")
+      return false
+    }else if (this.jogadores.length < 1){
+        this.MensagemService.error("Sem jogadores")
+        return false
+    } else{
+      return true
+    }
+  }
+
+  reloadJogadores(){
+    const id = this.route.snapshot.paramMap.get('id')
+    // @ts-ignorecd
+    this.MatchService.readById(id).subscribe(match => {
+      // @ts-ignore
+      this.jogadores = match.jogadores;
+      this.tipoEspecial = match.esporte.toLowerCase() === 'volei' ? 'Levantador' : match.esporte.toLowerCase() === 'futebol' ? 'Goleiro' : 'Invalido';
+      this.getForcaMedia()
+    })
+  }
+
+  getJogadorEspecial(): Jogador | boolean {
+    this.shuffleArray(this.jogadores);
+    let jogadorEspecial = new Jogador();
+    let jogadorAlternativo = new Jogador();
+
+    this.jogadores.forEach(jj => {
+      if(jj.especial){
+        jogadorEspecial = jj
+        return
+      }
+    })
+
+    this.jogadores = this.jogadores.filter(j => j.nome !== jogadorEspecial.nome)
+
+    if(jogadorEspecial.especial){
+      return jogadorEspecial;
+    } else{ // caso nao existam mais jogadores especiais
+      jogadorAlternativo = this.jogadores[0]
+      this.jogadores = this.jogadores.filter(j => j.nome !== jogadorAlternativo.nome)
+
+      return jogadorAlternativo
+    }
+  }
+
+  adicionarEspeciais(){
+    for (let i = 0; i < this.times.length; i++) {
+      if (this.times[i].semEspecial){
+        // @ts-ignore
+        this.times[i].addJogador(this.getJogadorEspecial())
+      }
+    }
   }
 
 
