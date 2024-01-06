@@ -65,10 +65,12 @@ export class SorteioMatchComponent implements OnInit{
         if (elapsedTime >= 2000) {
           this.MensagemService.error("Limite de tempo atingido. Abortando o sorteio")
           break;
+        } else{
+          this.MatchService.setTimes(this.times)
+          this.goToList()
         }
       } while (!this.calculaEquilibrio());
-      this.MatchService.setTimes(this.times)
-      this.goToList()
+
     }
   }
 
