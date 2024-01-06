@@ -23,7 +23,6 @@ export class SorteioMatchComponent implements OnInit{
 
   tipoEspecial = ''
 
-  resorteio = false
 
 
 
@@ -48,65 +47,44 @@ export class SorteioMatchComponent implements OnInit{
 
   }
 
-
-
 // Adicione o método abaixo à sua classe SorteioMatchComponent
   realizarSorteio() {
-    if(!this.resorteio){
-      do{
-        this.preparaTimes()
-        this.montaTimes()
-      } while(!this.calculaEquilibrio())
-      this.resorteio = true
+    if (this.validate()) {
+      this.reloadJogadores();
 
-    } else{
-      this.MensagemService.error(`Reinicie a pagina`)
-      return
+      let startTime = Date.now(); // Registra o tempo inicial
+
+
+      do {
+        this.preparaTimes();
+        this.montaTimes();
+
+        let elapsedTime = Date.now() - startTime; // Calcula o tempo decorrido
+
+        // Se o tempo decorrido for maior ou igual a 5 segundos, sai do loop
+        if (elapsedTime >= 2000) {
+          this.MensagemService.error("Limite de tempo atingido. Abortando o sorteio")
+          break;
+        }
+      } while (!this.calculaEquilibrio());
+      this.MatchService.setTimes(this.times)
+      this.goToList()
     }
-
-
-
-
-
-
-
   }
+
+  goToList(){
+    this.router.navigate(['matches/details/:id/sorteio/listagem'])
+  }
+
+
 
 
   preparaTimes(){
     this.times = []
     for ( let i = 0; i < this.numero_times; i++){
-      this.times.push(new Time(`Time ${this.alfabeto[i]}`, this.jogadores_por_time))
+      this.times.push(new Time(`${this.alfabeto[i]}`, this.jogadores_por_time))
     }
   }
-
-  getForcaMedia() {
-    let forcaTotal = 0
-
-    for( let jogador of this.jogadores) {
-      // @ts-ignore
-      forcaTotal += jogador.score
-    }
-
-    this.forcaMedia = forcaTotal / this.jogadores.length
-
-  }
-
-  calculaEquilibrio(){
-    let forcaMinima = Number.MAX_VALUE;
-    let forcaMaxima = Number.MIN_VALUE;
-
-    for (let time of this.times) {
-      forcaMinima = Math.min(time.forca, forcaMinima);
-      forcaMaxima = Math.max(time.forca, forcaMaxima);
-    }
-
-    // Verifica se a força minima é ao menos 80% da força maxima
-    return !(forcaMinima < 0.8 * forcaMaxima)
-
-  }
-
-
   montaTimes() {
     this.adicionarEspeciais()
     // Randomiza a lista de jogadores e times
@@ -133,8 +111,6 @@ export class SorteioMatchComponent implements OnInit{
         jogadorIndex = 0;
       }
     }
-
-
   }
   _getJogador(forca: number) {
     let jogadorEncontrado: Jogador | null = null;
@@ -207,10 +183,86 @@ export class SorteioMatchComponent implements OnInit{
     }
   }
 
+  reloadJogadores(){
+    const id = this.route.snapshot.paramMap.get('id')
+    // @ts-ignorecd
+    this.MatchService.readById(id).subscribe(match => {
+      // @ts-ignore
+      this.jogadores = match.jogadores;
+      this.tipoEspecial = match.esporte.toLowerCase() === 'volei' ? 'Levantador' : match.esporte.toLowerCase() === 'futebol' ? 'Goleiro' : 'Invalido';
+      this.getForcaMedia()
+    })
+  }
 
+  getJogadorEspecial(): Jogador | null {
+    this.shuffleArray(this.jogadores);
+    let jogadorEspecial = new Jogador();
+    let jogadorAlternativo = new Jogador();
 
+    this.jogadores.forEach(jj => {
+      if(jj.especial){
+        jogadorEspecial = jj
+        return
+      }
+    })
 
+    this.jogadores = this.jogadores.filter(j => j.nome !== jogadorEspecial.nome)
 
+    if(jogadorEspecial.especial){
+      return jogadorEspecial;
+    } else{ // caso nao existam mais jogadores especiais
+      jogadorAlternativo = this.jogadores[0]
+      this.jogadores = this.jogadores.filter(j => j.nome !== jogadorAlternativo.nome)
+
+      return jogadorAlternativo
+    }
+  }
+
+  adicionarEspeciais(){
+    for (let i = 0; i < this.times.length; i++) {
+      if (this.times[i].semEspecial){
+        // @ts-ignore
+        let jogador = this.getJogadorEspecial()
+
+        if(jogador)
+          this.times[i].addJogador(jogador)
+      }
+    }
+  }
+
+  qtdEspeciais(){
+    let contador = 0
+    this.jogadores.forEach(jgd => {
+      if(jgd.especial){
+        contador += 1
+      }
+    })
+
+    return contador
+  }
+
+  getForcaMedia() {
+    let forcaTotal = 0
+    for( let jogador of this.jogadores) {
+      // @ts-ignore
+      forcaTotal += jogador.score
+    }
+    this.forcaMedia = forcaTotal / this.jogadores.length
+  }
+
+  calculaEquilibrio(){
+    let forcaMinima = Number.MAX_VALUE;
+    let forcaMaxima = Number.MIN_VALUE;
+
+    for (let time of this.times) {
+      forcaMinima = Math.min(time.forca, forcaMinima);
+      forcaMaxima = Math.max(time.forca, forcaMaxima);
+    }
+
+    // Verifica se a força minima é ao menos 80% da força maxima
+    return !(forcaMinima < 0.8 * forcaMaxima)
+
+  }
 
   maisTimes(){
     this.numero_times += 1
@@ -241,54 +293,10 @@ export class SorteioMatchComponent implements OnInit{
       this.MensagemService.error("Numero de jogadores invalido")
       return false
     }else if (this.jogadores.length < 1){
-        this.MensagemService.error("Sem jogadores")
-        return false
+      this.MensagemService.error("Recarregue a pagina")
+      return false
     } else{
       return true
-    }
-  }
-
-  reloadJogadores(){
-    const id = this.route.snapshot.paramMap.get('id')
-    // @ts-ignorecd
-    this.MatchService.readById(id).subscribe(match => {
-      // @ts-ignore
-      this.jogadores = match.jogadores;
-      this.tipoEspecial = match.esporte.toLowerCase() === 'volei' ? 'Levantador' : match.esporte.toLowerCase() === 'futebol' ? 'Goleiro' : 'Invalido';
-      this.getForcaMedia()
-    })
-  }
-
-  getJogadorEspecial(): Jogador | boolean {
-    this.shuffleArray(this.jogadores);
-    let jogadorEspecial = new Jogador();
-    let jogadorAlternativo = new Jogador();
-
-    this.jogadores.forEach(jj => {
-      if(jj.especial){
-        jogadorEspecial = jj
-        return
-      }
-    })
-
-    this.jogadores = this.jogadores.filter(j => j.nome !== jogadorEspecial.nome)
-
-    if(jogadorEspecial.especial){
-      return jogadorEspecial;
-    } else{ // caso nao existam mais jogadores especiais
-      jogadorAlternativo = this.jogadores[0]
-      this.jogadores = this.jogadores.filter(j => j.nome !== jogadorAlternativo.nome)
-
-      return jogadorAlternativo
-    }
-  }
-
-  adicionarEspeciais(){
-    for (let i = 0; i < this.times.length; i++) {
-      if (this.times[i].semEspecial){
-        // @ts-ignore
-        this.times[i].addJogador(this.getJogadorEspecial())
-      }
     }
   }
 

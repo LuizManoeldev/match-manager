@@ -1,0 +1,13 @@
+<div class="cards" >
+  <mat-card class="team-card" *ngFor="let time of times">
+    <mat-card-header [id]="time.nome">
+      <mat-card-title> Time {{time.nome}} - {{time.mediaDoTime()}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let jogador of time.jogadores">
+        <h3> {{ jogador.nome }} - [ {{jogador.score}} ] </h3>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>

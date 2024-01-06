@@ -8,6 +8,7 @@ import { DetailsMatchComponent } from './details-match/details-match.component';
 import { EditMatchComponent } from './edit-match/edit-match.component';
 import { SorteioMatchComponent } from './sorteio-match/sorteio-match.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { ListTimesComponent } from './list-times/list-times.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     ListMatchComponent,
     DetailsMatchComponent,
     EditMatchComponent,
-    SorteioMatchComponent
+    SorteioMatchComponent,
+    ListTimesComponent
   ],
     imports: [
         CommonModule,

@@ -1,43 +1,8 @@
-.buttons{
-  display: flex;
-  flex-direction: column;
-  width: 30px;
-  height: 30px;
-  margin-top: 17px;
-}
-
-.buttons button{
-  height: 25px;
-  width: 25px;
-}
-.buttons button mat-icon{
-  height: 25px;
-  width: 25px;
-  vertical-align: middle;
-}
-
-.fields {
-  display: flex;
-  flex-direction: row;
-}
-mat-form-field{
-  width: 15rem;
-}
-
-#sort{
-  width: 15rem;
-  font-size: 0.9rem;
-}
-
 .cards{
-  display: flex;
+  display:flex;
   flex-direction: row;
   flex-wrap: wrap;
-  color: white;
-  vertical-align: middle;
-  justify-items: center;
 }
-
 .team-card {
   background-color: rgba(1, 0, 3, 0.73);
   height: 21rem;
@@ -92,6 +57,3 @@ mat-form-field{
 #L{
   background-color: cyan;
 }
-
-
-

@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {from, map, Observable} from "rxjs";
 import {Match} from "../model/match";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
+import {Time} from "../model/time";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class MatchFirestoreService {
 
   colecaoMatches: AngularFirestoreCollection<Match>;
   NOME_COLECAO = 'matches';
+
+  times: Time[] = []
 
   constructor(private afs: AngularFirestore) {
     this.colecaoMatches = afs.collection(this.NOME_COLECAO);
@@ -35,6 +38,14 @@ export class MatchFirestoreService {
 
   update(Match: Match): Observable<void> {
     return from(this.colecaoMatches.doc(Match.id).update(Object.assign({}, Match)));
+  }
+
+  setTimes(times: Time[]){
+    this.times = times;
+  }
+
+  getTimes(){
+    return this.times
   }
 
 }
