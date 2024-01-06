@@ -1,9 +1,22 @@
+
+#container{
+  display:flex;
+  flex-direction:row;
+  margin-left:auto;
+  margin-right:auto;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 60%;
+
+}
+
+
 .buttons{
   display: flex;
   flex-direction: column;
-  width: 30px;
-  height: 30px;
-  margin-top: 17px;
+  width: 35px;
+  height: 35px;
+  //margin-top: 15px;
 }
 
 .buttons button{
@@ -19,79 +32,23 @@
 .fields {
   display: flex;
   flex-direction: row;
+  height: 5rem;
 }
 mat-form-field{
-  width: 15rem;
+  width: 20rem;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 
 #sort{
-  width: 15rem;
+  width: 30rem;
   font-size: 0.9rem;
-}
-
-.cards{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  color: white;
-  vertical-align: middle;
-  justify-items: center;
-}
-
-.team-card {
-  background-color: rgba(1, 0, 3, 0.73);
-  height: 21rem;
-  width: 15rem;
-  margin: 10px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-  &:hover {
-    transform: scale(1.03);
-  }
 }
 
 .v-midle{
   vertical-align: middle;
 }
 
-
-#A{
-  background-color: red;
-}
-#B{
-  background-color: yellow;
-}
-#C{
-  background-color: blue;
-}
-#D{
-  background-color: green;
-}
-#E{
-  background-color: deeppink;
-}
-#F{
-  background-color: saddlebrown;
-}
-#G{
-  background-color: purple;
-}
-#H{
-  background-color: orangered;
-}
-#I{
-  background-color: skyblue;
-}
-#J{
-  background-color: black;
-}
-#K {
-  background-color: goldenrod;
-}
-#L{
-  background-color: cyan;
-}
 
 
 

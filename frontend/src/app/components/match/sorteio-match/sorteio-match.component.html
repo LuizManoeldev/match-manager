@@ -1,6 +1,7 @@
+<div id="container">
 <span class="fields">
   <mat-form-field>
-    NUMERO DE TIMES
+    <mat-label>Numero de times</mat-label>
    <input matInput [(ngModel)]="numero_times" placeholder="Numero de times">
   </mat-form-field>
   <span class="buttons">
@@ -10,7 +11,7 @@
 </span>
 <span class="fields">
   <mat-form-field>
-    NUMERO DE JOGADORES
+    <mat-label>Numero de jogadores</mat-label>
    <input matInput [(ngModel)]="jogadores_por_time" placeholder="Numero de jogadores">
   </mat-form-field>
    <span class="buttons">
@@ -19,4 +20,4 @@
    </span>
 </span>
 <button id="sort" mat-raised-button (click)="realizarSorteio()" color="accent"> Gerar times </button>
-
+</div>
