@@ -41,7 +41,11 @@ export class MatchFirestoreService {
   }
 
   setTimes(times: Time[]){
-    this.times = times;
+    if(times[0].jogadores.length < 1){ return false
+    } else{
+      this.times = times;
+      return true
+    }
   }
 
   getTimes(){

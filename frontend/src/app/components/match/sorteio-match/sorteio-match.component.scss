@@ -1,5 +1,14 @@
-
 #container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#jogadores{
+  height: 5rem;
+
+}
+#parametros{
   display:flex;
   flex-direction:row;
   margin-left:auto;
@@ -7,6 +16,18 @@
   justify-content: space-around;
   flex-wrap: wrap;
   width: 60%;
+
+  .fields {
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+
+    mat-form-field{
+      width: 20rem;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
+  }
 
 }
 
@@ -29,16 +50,8 @@
   vertical-align: middle;
 }
 
-.fields {
-  display: flex;
-  flex-direction: row;
-  height: 5rem;
-}
-mat-form-field{
-  width: 20rem;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
+
+
 
 #sort{
   width: 30rem;

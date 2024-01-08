@@ -1,5 +1,5 @@
-<div class="cards" >
-  <mat-card class="team-card" *ngFor="let time of times">
+<div class="cards-container" >
+  <mat-card *ngFor="let time of times">
     <mat-card-header [id]="time.nome">
       <mat-card-title> Time {{time.nome}} - {{time.mediaDoTime()}}</mat-card-title>
     </mat-card-header>

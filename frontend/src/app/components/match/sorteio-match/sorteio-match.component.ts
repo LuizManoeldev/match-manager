@@ -54,31 +54,29 @@ export class SorteioMatchComponent implements OnInit{
 
       let startTime = Date.now(); // Registra o tempo inicial
 
-
       do {
+
         this.preparaTimes();
         this.montaTimes();
 
         let elapsedTime = Date.now() - startTime; // Calcula o tempo decorrido
 
         // Se o tempo decorrido for maior ou igual a 5 segundos, sai do loop
-        if (elapsedTime >= 2000) {
-          this.MensagemService.error("Limite de tempo atingido. Abortando o sorteio")
-          break;
-        } else{
-          this.MatchService.setTimes(this.times)
+        if (elapsedTime >= 3000) {
+          this.MensagemService.error("Limite de tempo excedido. Tente novamente se necessario")
           this.goToList()
+          break;
         }
-      } while (!this.calculaEquilibrio());
+      }while (!this.calculaEquilibrio());
+      this.goToList()
 
     }
   }
 
   goToList(){
-    this.router.navigate(['matches/details/:id/sorteio/listagem'])
+    if(this.MatchService.setTimes(this.times))
+      this.router.navigate(['matches/details/:id/sorteio/listagem'])
   }
-
-
 
 
   preparaTimes(){
@@ -91,14 +89,15 @@ export class SorteioMatchComponent implements OnInit{
     this.adicionarEspeciais()
     // Randomiza a lista de jogadores e times
     this.shuffleArray(this.jogadores);
-    this.shuffleArray(this.times);
 
     let itTime = this.times[Symbol.iterator]();
     let jogadorIndex = 0;
 
     while (this.jogadores.length > 0) {
       const timeDaVez = itTime.next().value as Time;
-
+      if(timeDaVez === undefined) {
+        break
+      }
       if (timeDaVez.isCompleto()) {
         continue;
       }
@@ -191,11 +190,11 @@ export class SorteioMatchComponent implements OnInit{
     this.MatchService.readById(id).subscribe(match => {
       // @ts-ignore
       this.jogadores = match.jogadores;
-      this.tipoEspecial = match.esporte.toLowerCase() === 'volei' ? 'Levantador' : match.esporte.toLowerCase() === 'futebol' ? 'Goleiro' : 'Invalido';
-      this.getForcaMedia()
+
     })
   }
 
+  // @ts-ignore
   getJogadorEspecial(): Jogador | null {
     this.shuffleArray(this.jogadores);
     let jogadorEspecial = new Jogador();
@@ -261,8 +260,8 @@ export class SorteioMatchComponent implements OnInit{
       forcaMaxima = Math.max(time.forca, forcaMaxima);
     }
 
-    // Verifica se a força minima é ao menos 80% da força maxima
-    return !(forcaMinima < 0.8 * forcaMaxima)
+    // Verifica se a força minima é ao menos 77% da força maxima
+    return !(forcaMinima < 0.77 * forcaMaxima)
 
   }
 

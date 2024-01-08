@@ -25,7 +25,7 @@ export class MensagemService {
 
   private abrirSnackBar(mensagem: string, extraClasses: string[]): void {
     const config = new MatSnackBarConfig();
-    config.duration = 10000;
+    config.duration = 2000;
     config.politeness = 'assertive';
     config.panelClass = extraClasses;
     this.snackBar.open(mensagem, 'X', config);
