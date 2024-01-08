@@ -230,15 +230,7 @@ export class SorteioMatchComponent implements OnInit{
     }
   }
 
-  qtdEspeciais(){
-    this.jogadores.forEach(jgd => {
-      if(jgd.especial){
-        contador += 1
-      }
-    })
 
-    return contador
-  }
 
   getForcaMedia() {
     let forcaTotal = 0
