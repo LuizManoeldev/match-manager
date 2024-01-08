@@ -14,6 +14,7 @@ export class MatchFirestoreService {
   NOME_COLECAO = 'matches';
 
   times: Time[] = []
+  tipoEspecial = ''
 
   constructor(private afs: AngularFirestore) {
     this.colecaoMatches = afs.collection(this.NOME_COLECAO);
@@ -50,6 +51,10 @@ export class MatchFirestoreService {
 
   getTimes(){
     return this.times
+  }
+
+  setEspecial(){
+
   }
 
 }

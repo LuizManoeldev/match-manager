@@ -9,7 +9,7 @@
 }
 mat-card{
   background-color: rgba(1, 0, 3, 0.73);
-  height: 21rem;
+  height: auto + 0.5rem;
   width: 15rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -29,8 +29,25 @@ mat-card-header {
   border-bottom-left-radius: 0;
 }
 
-.v-midle{
+mat-icon{
   vertical-align: middle;
+}
+
+.name{
+  font-size:1.1rem;
+  font-weight:bold;
+  margin-left:0.5rem;
+  vertical-align: bottom;
+}
+
+#score{
+  color: darkgreen;
+  vertical-align: top;
+  width: 1px;
+}
+
+.jogadores{
+  margin-bottom: 0.5rem;
 }
 
 
@@ -69,4 +86,14 @@ mat-card-header {
 }
 #L{
   background-color: cyan;
+}
+
+
+@media (max-width: 600px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+  }
 }
