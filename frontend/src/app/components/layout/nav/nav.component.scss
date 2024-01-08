@@ -1,11 +1,17 @@
 mat-sidenav{
-    background-color: #262627;
+    background-color: rgba(17, 17, 17, 0.62);
     width:13%;
+    height:100%;
     color: #ffffff;
+
 
   }
 mat-sidenav-container{
-  background-color: #262627;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../assets/images/background-1.jpg);
+  background-size: cover;
 
 }
 .align{
@@ -18,11 +24,10 @@ mat-sidenav i {
 
 
 
-.content{
+mat-sidenav-content{
   padding: 16px;
-  background-image: url(../../../../assets/images/background-1.jpg);
-  background-size: cover;
-  height: 100vh;
+
+
 }
 
 

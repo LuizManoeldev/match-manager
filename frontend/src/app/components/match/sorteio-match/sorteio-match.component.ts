@@ -64,7 +64,6 @@ export class SorteioMatchComponent implements OnInit{
         // Se o tempo decorrido for maior ou igual a 5 segundos, sai do loop
         if (elapsedTime >= 3000) {
           this.MensagemService.error("Limite de tempo excedido. Tente novamente se necessario")
-          this.goToList()
           break;
         }
       }while (!this.calculaEquilibrio());
@@ -232,7 +231,6 @@ export class SorteioMatchComponent implements OnInit{
   }
 
   qtdEspeciais(){
-    let contador = 0
     this.jogadores.forEach(jgd => {
       if(jgd.especial){
         contador += 1
@@ -260,8 +258,8 @@ export class SorteioMatchComponent implements OnInit{
       forcaMaxima = Math.max(time.forca, forcaMaxima);
     }
 
-    // Verifica se a força minima é ao menos 77% da força maxima
-    return !(forcaMinima < 0.77 * forcaMaxima)
+    // Verifica se a força minima é ao menos 75% da força maxima
+    return !(forcaMinima < 0.76 * forcaMaxima)
 
   }
 
