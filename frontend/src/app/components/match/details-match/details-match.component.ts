@@ -14,7 +14,6 @@ import {MensagemService} from "../../../shared/services/mensagem.service";
 export class DetailsMatchComponent implements OnInit, OnChanges {
   match: Match = new Match()
   jogador: Jogador = new Jogador()
-  scores = [1, 2, 3, 4, 5]
   tipoEspecial = ''
   displayedColumns = ['nome', 'score', 'actions']
 

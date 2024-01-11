@@ -6,7 +6,8 @@ mat-sidenav{
 mat-sidenav-container{
   width: 100%;
   min-height: 100vh;
-  background-image: url(../../../../assets/images/background-1.jpg);
+  background: none;
+  //background-image: url(../../../../assets/images/background-2.jpg);
   background-size: cover;
 
 }

@@ -13,19 +13,14 @@ import {Time} from "../../../shared/model/time";
   styleUrls: ['./sorteio-match.component.scss']
 })
 export class SorteioMatchComponent implements OnInit{
-  jogadores:Jogador[] = [];
+  backUpJogadores: Jogador[] = []
+  jogadores: Jogador[] = []
   times: Time[] = []
   alfabeto = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
 
   numero_times = 0
   jogadores_por_time = 0
   forcaMedia = 0
-
-  tipoEspecial = ''
-
-
-
-
 
 
   constructor(private MatchService: MatchFirestoreService,
@@ -40,17 +35,21 @@ export class SorteioMatchComponent implements OnInit{
     // @ts-ignorecd
     this.MatchService.readById(id).subscribe(match => {
       // @ts-ignore
+      this.backUpJogadores = match.jogadores;
+      // @ts-ignore
       this.jogadores = match.jogadores;
-      this.tipoEspecial = match.esporte.toLowerCase() === 'volei' ? 'Levantador' : match.esporte.toLowerCase() === 'futebol' ? 'Goleiro' : 'Invalido';
       this.getForcaMedia()
     })
+  }
 
+
+  carregarJogadores(){
+    this.jogadores = this.backUpJogadores.slice()
   }
 
 // Adicione o método abaixo à sua classe SorteioMatchComponent
   realizarSorteio() {
     if (this.validate()) {
-      this.reloadJogadores();
 
       let startTime = Date.now(); // Registra o tempo inicial
 
@@ -63,7 +62,7 @@ export class SorteioMatchComponent implements OnInit{
 
         // Se o tempo decorrido for maior ou igual a 5 segundos, sai do loop
         if (elapsedTime >= 3000) {
-          this.MensagemService.error("Limite de tempo excedido. Tente novamente se necessario")
+          this.MensagemService.error("Tente Novamente")
           break;
         }
       }while (!this.calculaEquilibrio());
@@ -181,16 +180,6 @@ export class SorteioMatchComponent implements OnInit{
     }
   }
 
-  reloadJogadores(){
-    const id = this.route.snapshot.paramMap.get('id')
-    // @ts-ignorecd
-    this.MatchService.readById(id).subscribe(match => {
-      // @ts-ignore
-      this.jogadores = match.jogadores;
-
-    })
-  }
-
   // @ts-ignore
   getJogadorEspecial(): Jogador | null {
     this.shuffleArray(this.jogadores);
@@ -282,8 +271,8 @@ export class SorteioMatchComponent implements OnInit{
       this.MensagemService.error("Numero de jogadores invalido")
       return false
     }else if (this.jogadores.length < 1){
-      this.MensagemService.error("Recarregue a pagina")
-      return false
+      this.carregarJogadores();
+      return true
     } else{
       return true
     }

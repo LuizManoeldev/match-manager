@@ -12,9 +12,15 @@
         </p>
         <p>
         <i class="material-icons v-midle" >
-              person
+              sports_volleyball
+          </i> {{match.esporte}}
+        </p>
+        <p>
+          <i class="material-icons v-midle" >
+            person_outline
           </i> {{match.jogadores.length}}
         </p>
+
       </mat-card-content>
       <mat-card-actions>
         <a routerLink="details/{{match.id}}" mat-icon-button ><mat-icon>menu</mat-icon></a>

@@ -36,7 +36,7 @@ export class ListMatchComponent implements OnInit{
       case "volei":
         return "../../../../assets/images/volei.png"
       default:
-        return "../../../../assets/images/soccer.png"
+        return "../../../../assets/images/peladateste.jpg"
     }
   }
 
