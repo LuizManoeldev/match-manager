@@ -1,21 +1,19 @@
 #container{
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   width: 100%;
-}
-
-#jogadores{
-  height: 5rem;
+  min-height: 100vh;
 
 }
+
 #parametros{
   display:flex;
-  flex-direction:row;
-  margin-left:auto;
-  margin-right:auto;
-  justify-content: space-around;
+  flex-direction:column;
+  margin: 0 auto;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  width: 60%;
+  width: 50%;
+
 
   .fields {
     display: flex;
@@ -23,45 +21,66 @@
     height: 5rem;
 
     mat-form-field{
-      width: 20rem;
+      width: 100%;
       border-top-right-radius: 0;
       border-top-left-radius: 0;
+    }
+
+    #sortButton{
+      font-size: 0.9rem;
+      width: 100%;
+    }
+
+    .actionButtons{
+      display: flex;
+      flex-direction: column;
+      width: 35px;
+      height: 35px;
+
+      button{
+        height: 25px;
+        width: 25px;
+
+        mat-icon{
+          height: 25px;
+          width: 25px;
+          vertical-align: middle;
+        }
+      }
+
     }
   }
 
 }
 
-
-.buttons{
-  display: flex;
-  flex-direction: column;
-  width: 35px;
-  height: 35px;
-  //margin-top: 15px;
+#table{
+  width:20%;
+  margin:auto;
 }
 
-.buttons button{
-  height: 25px;
-  width: 25px;
-}
-.buttons button mat-icon{
-  height: 25px;
-  width: 25px;
-  vertical-align: middle;
+table {
+  background: rgba(0, 0, 0, 0.26);
+
+  .capitan {
+    width: 25px;
+    height: 25px;
+  }
+
 }
 
 
+@media (max-width: 700px){
+  #container{
+    flex-direction:column;
+    flex-grow: 1;
+  }
 
+  #parametros{
+    width:100%;
+  }
 
-#sort{
-  width: 30rem;
-  font-size: 0.9rem;
+  #table{
+    width: 100%;
+    margin: 0 auto;
+  }
 }
-
-.v-midle{
-  vertical-align: middle;
-}
-
-
-
-

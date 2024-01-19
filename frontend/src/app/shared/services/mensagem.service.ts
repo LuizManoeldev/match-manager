@@ -28,6 +28,7 @@ export class MensagemService {
     config.duration = 2000;
     config.politeness = 'assertive';
     config.panelClass = extraClasses;
+
     this.snackBar.open(mensagem, 'X', config);
   }
 }

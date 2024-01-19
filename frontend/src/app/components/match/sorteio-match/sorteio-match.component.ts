@@ -23,6 +23,10 @@ export class SorteioMatchComponent implements OnInit{
   forcaMedia = 0
 
 
+  displayedColumns = ['nome', 'checkbox']
+
+  jogadoresParaSorteio: Jogador[] = []
+
   constructor(private MatchService: MatchFirestoreService,
               private router: Router,
               private route: ActivatedRoute,
@@ -49,6 +53,7 @@ export class SorteioMatchComponent implements OnInit{
 
 // Adicione o método abaixo à sua classe SorteioMatchComponent
   realizarSorteio() {
+    console.log(this.jogadoresParaSorteio)
     if (this.validate()) {
 
       let startTime = Date.now(); // Registra o tempo inicial
@@ -279,4 +284,8 @@ export class SorteioMatchComponent implements OnInit{
   }
 
 
+  addJogadorNoSorteio(jogador: Jogador) {
+    this.jogadoresParaSorteio.push(jogador)
+
+  }
 }
