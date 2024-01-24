@@ -167,21 +167,45 @@ export class SorteioMatchComponent implements OnInit{
     }
 
     let forca = 0;
-    if (peso >= 0 && peso < 0.10) {
-      // 10%
-      forca = 1;
-    } else if (peso >= 0.10 && peso < 0.25) {
-      // 15%
-      forca = 2;
-    } else if (peso >= 0.25 && peso < 0.65) {
-      // 40%
-      forca = 3;
-    } else if (peso >= 0.65 && peso < 0.95) {
-      // 30%
-      forca = 4;
-    } else if (peso >= 0.95) {
+
+    // if (peso >= 0 && peso < 0.10) {
+    //   // 10%
+    //   forca = 1;
+    // } else if (peso >= 0.10 && peso < 0.25) {
+    //   // 15%
+    //   forca = 2;
+    // } else if (peso >= 0.25 && peso < 0.65) {
+    //   // 40%
+    //   forca = 3;
+    // } else if (peso >= 0.65 && peso < 0.95) {
+    //   // 30%
+    //   forca = 4;
+    // } else if (peso >= 0.95) {
+    //   // 5%
+    //   forca = 5;
+    // }
+
+    if (peso >= 0 && peso < 0.035) {
       // 5%
+      forca = 1;
+    } else if (peso >= 0.035 && peso < 0.135) {
+      // 10%
+      forca = 2;
+    } else if (peso >= 0.135 && peso < 0.335) {
+      // 20%
+      forca = 3;
+    } else if (peso >= 0.335 && peso < 0.535) {
+      // 20%
+      forca = 4;
+    } else if (peso >= 0.535 && peso < 0.735) {
+      // 20%
       forca = 5;
+    } else if (peso >= 0.735 && peso < 0.835) {
+      // 10%
+      forca = 6;
+    } else if (peso >= 0.835) {
+      // 15%
+      forca = 7;
     }
 
     let jj = this._getJogador(forca);
@@ -256,7 +280,7 @@ export class SorteioMatchComponent implements OnInit{
     }
 
     // Verifica se a força minima é ao menos 75% da força maxima
-    return !(forcaMinima < 0.76 * forcaMaxima)
+    return !(forcaMinima < 0.8 * forcaMaxima)
 
   }
 
