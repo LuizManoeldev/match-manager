@@ -13,8 +13,12 @@ import {Time} from "../../../shared/model/time";
   styleUrls: ['./sorteio-match.component.scss']
 })
 export class SorteioMatchComponent implements OnInit{
-  backUpJogadores: Jogador[] = []
+  backUpJogadores: Jogador[] = [] // backup para nao ser necessario nova comunicação com o banco
+
   jogadores: Jogador[] = []
+
+  jogadoresParaSorteio: Jogador[] = []
+
   times: Time[] = []
   alfabeto = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
 
@@ -25,7 +29,7 @@ export class SorteioMatchComponent implements OnInit{
 
   displayedColumns = ['nome', 'checkbox']
 
-  jogadoresParaSorteio: Jogador[] = []
+
 
   constructor(private MatchService: MatchFirestoreService,
               private router: Router,
@@ -47,13 +51,8 @@ export class SorteioMatchComponent implements OnInit{
   }
 
 
-  carregarJogadores(){
-    this.jogadores = this.backUpJogadores.slice()
-  }
 
-// Adicione o método abaixo à sua classe SorteioMatchComponent
   realizarSorteio() {
-    console.log(this.jogadoresParaSorteio)
     if (this.validate()) {
 
       let startTime = Date.now(); // Registra o tempo inicial
@@ -68,6 +67,7 @@ export class SorteioMatchComponent implements OnInit{
         // Se o tempo decorrido for maior ou igual a 5 segundos, sai do loop
         if (elapsedTime >= 3000) {
           this.MensagemService.error("Tente Novamente")
+          this.carregarJogadores()
           break;
         }
       }while (!this.calculaEquilibrio());
@@ -79,6 +79,19 @@ export class SorteioMatchComponent implements OnInit{
   goToList(){
     if(this.MatchService.setTimes(this.times))
       this.router.navigate(['matches/details/:id/sorteio/listagem'])
+  }
+
+  addJogadorParaSorteio(event: any, elemento: any) {
+    if (event.checked) {
+      // Adicionar elemento ao array se o checkbox estiver marcado
+      this.jogadoresParaSorteio.push(elemento);
+    } else {
+      // Remover elemento do array se o checkbox estiver desmarcado
+      const index = this.jogadoresParaSorteio.indexOf(elemento);
+      if (index !== -1) {
+        this.jogadoresParaSorteio.splice(index, 1);
+      }
+    }
   }
 
 
@@ -268,6 +281,11 @@ export class SorteioMatchComponent implements OnInit{
 
   }
 
+  carregarJogadores(){
+    this.jogadores = this.backUpJogadores.slice()
+  }
+
+
   validate(){
     if((this.numero_times < 1)){
       this.MensagemService.error("Numero de times invalido")
@@ -284,8 +302,4 @@ export class SorteioMatchComponent implements OnInit{
   }
 
 
-  addJogadorNoSorteio(jogador: Jogador) {
-    this.jogadoresParaSorteio.push(jogador)
-
-  }
 }

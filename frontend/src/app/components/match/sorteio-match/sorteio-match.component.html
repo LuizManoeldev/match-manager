@@ -34,7 +34,7 @@
       <ng-container matColumnDef="checkbox">
         <th mat-header-cell *matHeaderCellDef>Selecionar</th>
         <td mat-cell *matCellDef="let row">
-          <mat-checkbox [value]="row" ></mat-checkbox>
+          <mat-checkbox (change)="addJogadorParaSorteio($event, row)" ></mat-checkbox>
         </td>
       </ng-container>
 
